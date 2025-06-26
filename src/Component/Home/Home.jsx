@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import home  from '../../assets/videoframe_11633.png';
+import { FiMenu, FiX } from 'react-icons/fi';
+import { FaFolder } from "react-icons/fa";
+import { LiaHandPointerSolid } from "react-icons/lia";
+import home from '../../assets/189639-886016299_large.mp4';
+import { saveAs } from "file-saver";
+import resumePDF from "../../assets/KeerthanaMurugaiyan_Resume.pdf"; // Adjust path as needed
 
-const HeroSection = () => {
+const HeroSection = () => { 
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,154 +19,231 @@ const HeroSection = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.25,
-      delayChildren: 0.3,
+
+  const sentences = [
+    "Turning Ideas into Pixel-Perfect Interfaces",
+    "Crafting Beautiful & Responsive Web Designs",
+    "Building Modern Frontend Experiences",
+    "Transforming Designs into Interactive UI",
+    "Passionate React Developer with a Creative Touch"
+  ];
+
+  const [displayedText, setDisplayedText] = useState("");
+  const [sentenceIndex, setSentenceIndex] = useState(0);
+
+  useEffect(() => {
+    let currentIndex = 0;
+    let isDeleting = false;
+    let typingTimeout;
+
+    const typeSentence = () => {
+      const currentSentence = sentences[sentenceIndex];
+
+      if (!isDeleting) {
+        setDisplayedText(currentSentence.slice(0, currentIndex + 1));
+        currentIndex++;
+
+        if (currentIndex === currentSentence.length) {
+          isDeleting = true;
+          typingTimeout = setTimeout(() => {
+            currentIndex = 0;
+            isDeleting = false;
+            setDisplayedText("");
+            setSentenceIndex((prev) => (prev + 1) % sentences.length);
+            typeSentence();
+          }, 2500);
+          return;
+        }
+      }
+
+      typingTimeout = setTimeout(typeSentence, 150);
+    };
+
+    typeSentence();
+
+    return () => clearTimeout(typingTimeout);
+  }, [sentenceIndex]);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.25,
+        delayChildren: 0.3,
+      },
     },
-  },
+  };
+
+  const childVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: 'spring',
+        stiffness: 80,
+      },
+    },
+  };
+
+  useEffect(() => {
+  document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
+}, [isMenuOpen]);
+
+const handleDownload = () => {
+  saveAs(resumePDF, "Keerthana_Murugaiyan_Resume.pdf");
 };
 
-const childVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: 'spring',
-      stiffness: 80,
-    },
-  },
-};
   return (
-//     <div className="relative w-full h-screen overflow-hidden">
-//       {/* Background Video */}
-//       {/* <img src={home} alt="Video thumbnail w-100 h-100" style={{width:'100%', height:'100%'}} /> */}
-//   {/* Video background */}
-//   <video
-//     autoPlay
-//     loop
-//     muted
-//     playsInline
-//     className="absolute w-full h-full object-cover z-0"
-//     src="/hero.mp4"
-//   />
+    <div className="relative w-full h-screen overflow-hidden">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute w-full h-full object-cover z-0"
+        src={home}
+      />
 
-//       <div className="absolute inset-0 bg-opacity-60" />
-// <div
-//   className={`fixed z-50 transition-all duration-500 ${
-//     isScrolled
-//       ? 'top-5 left-5 right-5 rounded-2xl shadow-md bg-[#40354A] px-10 py-5'
-//       : 'top-0 left-0 right-0 w-full px-10 py-4'
-//   } flex justify-between items-center`}
-// >
+      <div
+        className={`absolute inset-0 z-10 transition-colors duration-500 ${
+          isScrolled ? 'bg-[#40354A]/90' : 'bg-[#40354A]/80'
+        }`}
+      />
 
-//         <h1 className="text-white text-2xl font-bold">YourLogo</h1>
-        
-//         <ul className="flex gap-6 text-white font-bold">
-//           <li><a href="#home" className="cursor-pointer text-white hover:text-[rgb(181,158,213)]">Home</a></li>
-//           <li><a href="#about" className="cursor-pointer text-white hover:text-[rgb(181,158,213)]">About</a></li>
-//           <li><a href="#skills" className="cursor-pointer text-white hover:text-[rgb(181,158,213)]">Skills</a></li>
-//           <li><a href="#projects" className="cursor-pointer text-white hover:text-[rgb(181,158,213)]">Projects</a></li>
-//           <li><a href="#contact" className="cursor-pointer text-white hover:text-[rgb(181,158,213)]">Contact</a></li>
-//         </ul>
-//         <button className="bg-pink-500 hover:bg-pink-600 text-white px-5 py-2 rounded-full">
-//           Let’s Chat
-//         </button>
-//       </div>
+      <div
+        className={`fixed z-50 transition-all duration-500 ${
+          isScrolled
+            ? 'top-10 left-10 right-10 rounded-2xl shadow-md bg-[#40354A]/75 px-6 py-4'
+            : 'top-0 left-0 right-0 w-full px-6 py-4'
+        } flex justify-between items-center`}
+      >
 
-//   <motion.div
-//   className="absolute inset-0 flex flex-col items-center justify-center text-center text-white z-10"
-//   variants={containerVariants}
-//   initial="hidden"
-//   whileInView="visible"
-//   transition={{ duration: 0.5 }}
-//   viewport={{ once: false, amount: 0.30 }}
-// >
+        <h1 className="text-white text-2xl font-bold">YourLogo</h1>
 
-//     <motion.h1
-//       className="text-5xl md:text-6xl font-bold mb-4"
-//       variants={childVariants}
-//     >
-//       I Build Stunning Frontend Interfaces
-//     </motion.h1>
+        <div className="lg:hidden">
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white text-2xl">
+            {/* {isMenuOpen ? <FiX /> : <FiMenu />} */}
+            <FiMenu />
+          </button>
+        </div>
 
-//     <motion.p
-//       className="text-lg md:text-xl max-w-xl"
-//       variants={childVariants}
-//     >
-//       Passionate about crafting modern web experiences with React, seamless animations, and clean UI/UX.
-//     </motion.p>
+        <ul className="hidden lg:flex gap-6 text-white font-bold">
+          <li><a href="#home" className="hover:text-[#B59ED5]">Home</a></li>
+          <li><a href="#about" className="hover:text-[#B59ED5]">About</a></li>
+          <li><a href="#skills" className="hover:text-[#B59ED5]">Skills</a></li>
+          <li><a href="#projects" className="hover:text-[#B59ED5]">Projects</a></li>
+          <li><a href="#contact" className="hover:text-[#B59ED5]">Contact</a></li>
+        </ul>
 
-//     <motion.div
-//       className="mt-8 flex gap-4"
-//       variants={childVariants}
-//     >
-//       <motion.button
-//         className="px-6 py-3 bg-cyan-500 hover:bg-cyan-600 text-white rounded-full text-lg cursor-pointer shadow-md hover:shadow-lg transition duration-300"
-//         whileHover={{
-//           scale: 1.07,
-//           boxShadow: '0 0 12px rgba(34, 211, 238, 0.8)',
-//         }}
-//       >
-//         Discover More
-//       </motion.button>
-
-//       <motion.button
-//         className="px-6 py-3 bg-[#B59ED5] hover:bg-[#a484cd] text-white rounded-full text-lg cursor-pointer shadow-md hover:shadow-lg transition duration-300"
-//         whileHover={{
-//           scale: 1.07,
-//           boxShadow: '0 0 12px rgba(181,158,213,0.8)',
-//         }}
-//       >
-//         Download
-//       </motion.button>
-//     </motion.div>
-//   </motion.div>
-//     </div>
-
-<div className="relative w-full h-screen overflow-hidden">
-  <video
-    autoPlay
-    loop
-    muted
-    playsInline
-    className="absolute w-full h-full object-cover z-0"
-    src={home}
-  />
-
-  {/* ✅ Dim Overlay with Visible Effect */}
-  <div className="absolute inset-0 bg-black/30 z-10" />
-
-  {/* ✅ Navbar */}
+        <a
+  href="https://www.linkedin.com/in/keerthana-murugaiyan-947597303/"  // 🔁 Replace with your real LinkedIn URL
+  target="_blank"
+  rel="noopener noreferrer"
+>
+ 
+  <motion.button
+      whileHover={{
+        scale: 1.05,
+        backgroundColor: "#B59ED5",
+        boxShadow: "0 0 16px rgba(181, 158, 213, 0.4)",
+      }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      className="relative overflow-hidden pl-16 pr-8 py-4 rounded-full bg-[#B59ED5] text-white font-medium text-sm tracking-wide shadow-md group"
+    >
+      {/* Folder + Paper + Pencil */}
+      <div className="absolute inset-y-0 left-0 w-14 bg-[#a076c9] flex items-center justify-center rounded-full">
+        <div className="relative w-6 h-7">
+  {/* Back Paper */}
+  <div className="absolute w-5 h-6 bg-[#E1E6F9] rounded-[2px] left-[2px] top-[2px] z-0" />
+  
+  {/* Front Paper */}
+  {/* Paper Lines */}
+<div className="absolute left-[4px] z-20 top-[5px] space-y-[6px] opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 delay-200">
+  <div className="w-3.5 h-0.5 bg-[#BBC1E1] rounded-sm" />
+  <div className="w-3.5 h-0.5 bg-[#BBC1E1] rounded-sm" />
+  <div className="w-2.5 h-0.5 bg-[#BBC1E1] rounded-sm" />
+</div>
+  
+  {/* Lines – show on hover */}
   <div
-    className={`fixed z-50 transition-all duration-500 ${
-      isScrolled
-        ? 'top-5 left-5 right-5 rounded-2xl shadow-md bg-[#40354A] px-10 py-5'
-        : 'top-0 left-0 right-0 w-full px-10 py-4'
-    } flex justify-between items-center`}
-  >
-    <h1 className="text-white text-2xl font-bold">YourLogo</h1>
+    className="absolute w-3.5 h-0.5 bg-[#BBC1E1] top-[5px] left-[4px] rounded-sm
+    opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 
+    transition-all duration-300 delay-100
+    shadow-[0_6px_#BBC1E1,0_12px_#BBC1E1]"
+  />
+{/* </div> */}
 
-    <ul className="flex gap-6 text-white font-bold">
-      <li><a href="#home" className="hover:text-[rgb(181,158,213)]">Home</a></li>
-      <li><a href="#about" className="hover:text-[rgb(181,158,213)]">About</a></li>
-      <li><a href="#skills" className="hover:text-[rgb(181,158,213)]">Skills</a></li>
-      <li><a href="#projects" className="hover:text-[rgb(181,158,213)]">Projects</a></li>
-      <li><a href="#contact" className="hover:text-[rgb(181,158,213)]">Contact</a></li>
-    </ul>
 
-    <button className="bg-pink-500 hover:bg-pink-600 text-white px-5 py-2 rounded-full">
-      Let’s Chat
-    </button>
-  </div>
+          {/* Folder Top */}
+          <div className="absolute top-0 left-0 z-20 transform group-hover:-translate-x-10 transition-transform duration-300">
+            <FaFolder className="text-[#F3E9CB] text-2xl transform group-hover:-rotate-45 transition-transform duration-300 origin-left" />
+          </div>
 
-  {/* ✅ Hero Content */}
-  <motion.div
+          {/* Pencil (now inside paper) */}
+          <div
+            className="absolute top-[1px] left-[28px] w-1 h-5 bg-white rounded-sm 
+              transform rotate-[35deg] translate-x-6 opacity-0 
+              group-hover:-translate-x-2 group-hover:opacity-100 
+              transition-all duration-300 z-30"
+          >
+            <div
+              className="absolute top-[2px] left-[-1px] w-[5px] h-[20px] 
+              bg-gradient-to-b from-[#275EFE] via-white to-[#5C86FF] 
+              rounded-t-sm"
+              style={{
+                clipPath: "polygon(0 5%, 100% 5%, 100% 85%, 50% 100%, 0 85%)",
+              }}
+            />
+            <div className="absolute w-[3px] h-[6px] top-[3px] left-[3px] 
+              bg-transparent border-t border-r border-[#275EFE] 
+              rounded-tr-sm" />
+          </div>
+        </div>
+      </div>
+
+      {/* Button Text with underline effect */}
+      <span className="relative z-10">
+        Let’s Chat
+        <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-white group-hover:w-full transition-all duration-500"></span>
+      </span>
+    </motion.button>
+</a>
+
+      </div>
+
+      {isMenuOpen && (
+ <motion.ul
+  initial={{ opacity: 0, y: -10 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.3 }}
+  className="lg:hidden absolute top-20 left-1/2 transform -translate-x-1/2 bg-[#40354A]/95 text-white text-center py-6 px-6 rounded-xl shadow-md z-40 w-[90%] "
+>
+
+   <button
+  onClick={() => setIsMenuOpen(false)}
+  className="absolute top-3 right-4 text-white text-2xl"
+>
+  <FiX />
+</button>
+
+    {["home", "about", "skills", "projects", "contact"].map((item) => (
+      <li key={item} className="py-2">
+        <a
+          href={`#${item}`}
+          onClick={() => setIsMenuOpen(false)}
+          className="block w-full"
+        >
+          {item.charAt(0).toUpperCase() + item.slice(1)}
+        </a>
+      </li>
+    ))}
+  </motion.ul>
+)}
+
+      <motion.div
     className="absolute inset-0 flex flex-col items-center justify-center text-center text-white z-20"
     variants={containerVariants}
     initial="hidden"
@@ -172,31 +255,81 @@ const childVariants = {
       I Build Stunning Frontend Interfaces
     </motion.h1>
 
-    <motion.p className="text-lg md:text-xl max-w-xl" variants={childVariants}>
-      Passionate about crafting modern web experiences with React, seamless animations, and clean UI/UX.
+    <motion.p className="text-lg md:text-xl max-w-xl" variants={childVariants}> {displayedText}
+    <span className="ml-1 w-1.5 h-6 bg-white animate-blink"></span>
     </motion.p>
 
-    <motion.div className="mt-8 flex gap-4" variants={childVariants}>
-      <motion.button
-        className="px-6 py-3 bg-cyan-500 hover:bg-cyan-600 text-white rounded-full text-lg cursor-pointer shadow-md hover:shadow-lg transition duration-300"
-        whileHover={{ scale: 1.07, boxShadow: '0 0 12px rgba(34, 211, 238, 0.8)' }}
-      >
-        Discover More
-      </motion.button>
+    <motion.div className="mt-8 flex flex-wrap gap-6 justify-center" variants={childVariants}>
+ 
+ <motion.button
+    whileHover={{ scale: 1.03 }}
+    onClick={handleDownload}
+    className="relative overflow-hidden group flex items-center px-6 py-5 font-semibold rounded-full bg-[#B59ED5] text-white transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] cursor-pointer"
+  >
+    <span className="relative z-10 mr-4">Resume</span>
 
-      <motion.button
-        className="px-6 py-3 bg-[#B59ED5] hover:bg-[#a484cd] text-white rounded-full text-lg cursor-pointer shadow-md hover:shadow-lg transition duration-300"
-        whileHover={{ scale: 1.07, boxShadow: '0 0 12px rgba(181,158,213,0.8)' }}
-      >
-        Download
-      </motion.button>
-    </motion.div>
+    <motion.svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="2"
+      stroke="#B59ED5"
+      className="w-5 h-5 relative z-10 transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:rotate-12 group-hover:-translate-y-1 group-hover:drop-shadow-[0_0_6px_#B59ED5]"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M12 4v12m0 0l-4-4m4 4l4-4"
+      />
+    </motion.svg>
+
+    <span className="absolute right-4.5 top-1/2 -translate-y-1/2 w-8 h-8 bg-gray-600 rounded-full transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:w-[calc(100%-1rem)] group-hover:h-full group-hover:right-2 z-0" />
+  </motion.button>
+
+   {/* <motion.button
+  whileHover={{ scale: 1.03 }}
+  onClick={handleDownload}
+  className="relative overflow-hidden group flex items-center px-6 py-5 font-semibold rounded-full bg-gray-600 text-white transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] cursor-pointer"
+>
+  <span className="relative z-10 mr-4">Discover More</span>
+
+  <motion.svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    strokeWidth="2"
+    stroke="white"
+    className="w-5 h-5 relative z-10 transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:rotate-12 group-hover:-translate-y-1 group-hover:drop-shadow-[0_0_6px_#B59ED5]"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M12 4v12m0 0l-4-4m4 4l4-4"
+    />
+  </motion.svg>
+
+  <span className="absolute right-4.5 top-1/2 -translate-y-1/2 w-8 h-8 bg-[#B59ED5] rounded-full transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:w-[calc(100%-1rem)] group-hover:h-full group-hover:right-2 z-0" />
+</motion.button> */}
+
+<motion.button
+  whileHover={{ scale: 1.03 }}
+  className="relative overflow-hidden group flex items-center px-6 py-5 font-semibold rounded-full bg-gray-600 text-white transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] cursor-pointer"
+>
+  <span className="relative z-10 mr-4">Discover More</span>
+
+  <LiaHandPointerSolid
+    className="w-5 h-5 rotate-190 relative z-10 transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:rotate-250 group-hover:-translate-y-1 group-hover:drop-shadow-[0_0_6px_#B59ED5]"
+  />
+
+  <span className="absolute right-4.5 top-1/2 -translate-y-1/2 w-8 h-8 bg-[#B59ED5] rounded-full transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:w-[calc(100%-1rem)] group-hover:h-full group-hover:right-2 z-0" />
+</motion.button>
+
+</motion.div>
+
   </motion.div>
-</div>
-
+   
+    </div>
   );
 };
 
 export default HeroSection;
-
-

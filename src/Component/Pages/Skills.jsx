@@ -99,8 +99,7 @@ const renderStars = (rating, color) => {
 
 const Skills = () => {
   return (
-    <section className="bg-[#f9fafb] py-1 px-6">
-     
+    <section className="bg-[#f9fafb] py-1 px-6 overflow-hidden">
 
       <h2 className="text-4xl font-bold text-center text-gray-800 mb-3">My Skills</h2>
 
@@ -130,8 +129,8 @@ const Skills = () => {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    const rotateY = ((x / rect.width) - 0.5) * 20;
-    const rotateX = ((0.5 - y / rect.height)) * 20;
+    const rotateY = ((x / rect.width) - 0.5) * 40;
+    const rotateX = ((0.5 - y / rect.height)) * 40;
     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
   }}
   onMouseLeave={(e) => {

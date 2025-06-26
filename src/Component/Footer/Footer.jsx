@@ -58,7 +58,7 @@ const Footer = () => {
               <FaEnvelope />
             </a>
             <a
-              href="https://linkedin.com/in/yourlinkedin"
+              href="https://www.linkedin.com/in/keerthana-murugaiyan-947597303/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"

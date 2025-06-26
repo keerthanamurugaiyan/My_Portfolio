@@ -1,7 +1,8 @@
 import React from 'react';
 import { FaTools } from 'react-icons/fa';
-import loan from '../../assets/interest-rates.webp';
+import lending from '../../assets/lendwise.jpg';
 import foodApplication from '../../assets/Food-Delivery.webp';
+import alwinDigital from '../../assets/alwin_digital.png'; 
 
 const projects = [
   {
@@ -9,7 +10,7 @@ const projects = [
     shortDesc: "A secure and intuitive lending platform UI built with React.",
     fullDesc:
       "A secure and intuitive lending platform interface built using ReactJS, Material-UI, and Bootstrap. Includes modules for loan requests, approvals, and repayment tracking. Integrated API calls for seamless data flow and JWT-based user authentication. Features an admin panel for monitoring activities, user verification, and dispute handling.",
-    image: loan,
+    image: lending,
     url: "#"
   },
   {
@@ -18,7 +19,7 @@ const projects = [
     shortDesc: "Responsive static site for a digital branding company.",
     fullDesc:
       "A custom digital branding website developed using ReactJS. Fully responsive and optimized for performance. Integrated React Icons and CSS animations. Hosted using Firebase with a focus on modern UI, branding consistency, and user accessibility.",
-    image: "https://i.pinimg.com/originals/a4/7b/a5/a47ba59b4a353e0928ef0551ca44f980.jpg",
+    image: alwinDigital,
     url: "https://allwindigital-vadapalani.web.app"
   },
   {
@@ -98,12 +99,12 @@ const Projects = () => {
 //     </section>
 
 
-<section className="bg-[#f9fafb] py-16 px-6">
+<section className="bg-[#f9fafb] py-10 px-6">
   <h2 className="text-4xl font-bold text-center text-gray-800 mb-3">Projects</h2>
 
 <p className="text-center text-gray-600 text-md mb-10 max-w-2xl mx-auto italic">
   A small collection of the things I’ve built — each one a step in my journey!{" "}
-  <FaTools className="inline align-middle text-yellow-600 text-lg" />
+  <FaTools className="inline align-middle mb-1 text-yellow-600 text-lg" />
 </p>
 
   <div id="projects" className="w-full bg-[#E4D4F2] min-h-screen py-16 px-6 flex justify-center items-center">
