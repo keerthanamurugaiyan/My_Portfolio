@@ -126,7 +126,7 @@ function Contact() {
           </Formik>
         </div>
       </div>
-      
+
       <AnimatePresence>
         {showToast && (
           <motion.div
@@ -156,4 +156,3 @@ function Contact() {
 }
 
 export default Contact;
-

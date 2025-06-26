@@ -103,40 +103,40 @@ const Skills = () => {
 
       <h2 className="text-4xl font-bold text-center text-gray-800 mb-3">My Skills</h2>
 
-<p className="text-center text-gray-600 text-md mb-10 max-w-2xl mx-auto italic">
-  Building seamless, high-performing interfaces where design meets data and every interaction feels effortless!{" "}
-  <HiRocketLaunch className="inline align-middle text-purple-600 text-xl" />
-</p>
+      <p className="text-center text-gray-600 text-md mb-10 max-w-2xl mx-auto italic">
+        Building seamless, high-performing interfaces where design meets data and every interaction feels effortless!{" "}
+        <HiRocketLaunch className="inline align-middle text-purple-600 text-xl" />
+      </p>
 
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto">
         {skills.map((skill, i) => (
 
- <motion.div
-  key={i}
-  initial={{
-    opacity: 0,
-    x: i % 2 === 0 ? -50 : 50,
-    y: i % 3 === 0 ? -30 : 30,
-  }}
-  whileInView={{ opacity: 1, x: 0, y: 0 }}
-  transition={{ duration: 0.6, delay: i * 0.1, type: 'spring', stiffness: 100 }}
-  // viewport={{ once: true, amount: 0.3 }}
-  viewport={{ once: false, amount: 0.3 }}
-  className="relative bg-[#1f2937] text-white rounded-2xl shadow-xl p-6 flex flex-col items-center justify-between h-52 overflow-hidden group"
-  onMouseMove={(e) => {
-    const card = e.currentTarget;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const rotateY = ((x / rect.width) - 0.5) * 40;
-    const rotateX = ((0.5 - y / rect.height)) * 40;
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-  }}
-  onMouseLeave={(e) => {
-    e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
-  }}
->
+          <motion.div
+            key={i}
+            initial={{
+              opacity: 0,
+              x: i % 2 === 0 ? -50 : 50,
+              y: i % 3 === 0 ? -30 : 30,
+            }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }}
+            transition={{ duration: 0.6, delay: i * 0.1, type: 'spring', stiffness: 100 }}
+            // viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: false, amount: 0.3 }}
+            className="relative bg-[#1f2937] text-white rounded-2xl shadow-xl p-6 flex flex-col items-center justify-between h-52 overflow-hidden group"
+            onMouseMove={(e) => {
+              const card = e.currentTarget;
+              const rect = card.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+              const rotateY = ((x / rect.width) - 0.5) * 40;
+              const rotateX = ((0.5 - y / rect.height)) * 40;
+              card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+            }}
+          >
             <div className="mb-4">{skill.icon}</div>
             <h3 className="text-lg font-semibold mb-2">{skill.name}</h3>
 
@@ -150,15 +150,15 @@ const Skills = () => {
               ></div>
             </div>
 
-              <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileHover={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.3 }}
-    className="absolute inset-0 flex flex-col justify-center items-center text-center bg-[#1f2937] rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"
-  >
-    <div className="mb-3">{skill.icon}</div>
-    <p className="text-sm px-2">{skill.description}</p>
-  </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileHover={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className="absolute inset-0 flex flex-col justify-center items-center text-center bg-[#1f2937] rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"
+            >
+              <div className="mb-3">{skill.icon}</div>
+              <p className="text-sm px-2">{skill.description}</p>
+            </motion.div>
 
           </motion.div>
         ))}
@@ -169,6 +169,3 @@ const Skills = () => {
 };
 
 export default Skills;
-
-
-
