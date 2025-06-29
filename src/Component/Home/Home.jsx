@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef  } from 'react';
 import { motion } from 'framer-motion';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { FaFolder } from "react-icons/fa";
@@ -6,10 +6,12 @@ import { LiaHandPointerSolid } from "react-icons/lia";
 import home from '../../assets/189639-886016299_large.mp4';
 import { saveAs } from "file-saver";
 import resumePDF from "../../assets/KeerthanaMurugaiyan_Resume.pdf"; // Adjust path as needed
+import { CgMenuHotdog } from "react-icons/cg";
 
 const HeroSection = () => { 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,6 +65,22 @@ const HeroSection = () => {
 
     return () => clearTimeout(typingTimeout);
   }, [sentenceIndex]);
+
+  useEffect(() => {
+  const handleClickOutside = (event) => {
+    if (menuRef.current && !menuRef.current.contains(event.target)) {
+      setIsMenuOpen(false);
+    }
+  };
+
+  if (isMenuOpen) {
+    document.addEventListener("mousedown", handleClickOutside);
+  }
+
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, [isMenuOpen]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -125,7 +143,8 @@ const handleDownload = () => {
         <div className="lg:hidden">
           <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white text-2xl">
             {/* {isMenuOpen ? <FiX /> : <FiMenu />} */}
-            <FiMenu />
+            {/* <FiMenu /> */}
+            <CgMenuHotdog />
           </button>
         </div>
 
@@ -137,8 +156,9 @@ const handleDownload = () => {
           <li><a href="#contact" className="hover:text-[#B59ED5]">Contact</a></li>
         </ul>
 
+<div className="hidden lg:block">
         <a
-  href="https://www.linkedin.com/in/keerthana-murugaiyan-947597303/"  // 🔁 Replace with your real LinkedIn URL
+  href="https://www.linkedin.com/in/keerthana-murugaiyan-947597303/"  
   target="_blank"
   rel="noopener noreferrer"
 >
@@ -151,7 +171,7 @@ const handleDownload = () => {
       }}
       whileTap={{ scale: 0.95 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className="relative overflow-hidden pl-16 pr-8 py-4 rounded-full bg-[#B59ED5] text-white font-medium text-sm tracking-wide shadow-md group"
+      className="relative overflow-hidden pl-16 pr-8 py-4 rounded-full bg-[#B59ED5] text-white font-medium text-sm tracking-wide shadow-md group cursor-pointer"
     >
       {/* Folder + Paper + Pencil */}
       <div className="absolute inset-y-0 left-0 w-14 bg-[#a076c9] flex items-center justify-center rounded-full">
@@ -211,10 +231,11 @@ const handleDownload = () => {
       </span>
     </motion.button>
 </a>
+</div>
 
       </div>
 
-      {isMenuOpen && (
+      {/* {isMenuOpen && (
  <motion.ul
   initial={{ opacity: 0, y: -10 }}
   animate={{ opacity: 1, y: 0 }}
@@ -240,6 +261,95 @@ const handleDownload = () => {
         </a>
       </li>
     ))}
+    <li className="pt-4">
+      <a
+        href="https://www.linkedin.com/in/keerthana-murugaiyan-947597303/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block"
+      >
+        <motion.button
+          whileHover={{
+            scale: 1.05,
+            backgroundColor: "#B59ED5",
+            boxShadow: "0 0 16px rgba(181, 158, 213, 0.4)",
+          }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          className="w-full py-3 px-6 rounded-full bg-[#B59ED5] text-white text-sm font-medium shadow-md"
+        >
+          Let’s Chat
+        </motion.button>
+      </a>
+    </li>
+  </motion.ul>
+)} */}
+
+{isMenuOpen && (
+  <motion.ul
+    ref={menuRef}
+    initial={{ opacity: 0, scale: 0.95 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.3 }}
+    className="lg:hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#40354A]/95 text-white text-center py-6 px-6 rounded-xl shadow-md z-40 w-[90%] max-w-md"
+  >
+    {/* <button
+      onClick={() => setIsMenuOpen(false)}
+      className="absolute top-3 right-4 text-white text-2xl"
+    >
+      <FiX />
+    </button> */}
+    <motion.button
+  onClick={() => setIsMenuOpen(false)}
+  whileHover={{ rotate: 180, scale: 1.1 }}
+  whileTap={{ scale: 0.9 }}
+  className="absolute top-3 right-4 text-white text-2xl"
+  transition={{ type: "spring", stiffness: 200, damping: 10 }}
+>
+  <motion.div
+    initial={{ opacity: 0, rotate: -90 }}
+    animate={{ opacity: 1, rotate: 0 }}
+    transition={{ duration: 0.4 }}
+  >
+    <FiX />
+  </motion.div>
+</motion.button>
+
+
+    {["home", "about", "skills", "projects", "contact"].map((item) => (
+      <li key={item} className="py-2">
+        <a
+          href={`#${item}`}
+          onClick={() => setIsMenuOpen(false)}
+          className="block w-full"
+        >
+          {item.charAt(0).toUpperCase() + item.slice(1)}
+        </a>
+      </li>
+    ))}
+
+    {/* Let’s Chat Button */}
+    <li className="pt-4">
+      <a
+        href="https://www.linkedin.com/in/keerthana-murugaiyan-947597303/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block"
+      >
+        <motion.button
+          whileHover={{
+            scale: 1.05,
+            backgroundColor: "#B59ED5",
+            boxShadow: "0 0 16px rgba(181, 158, 213, 0.4)",
+          }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          className="w-full py-3 px-6 rounded-full bg-[#B59ED5] text-white text-sm font-medium shadow-md"
+        >
+          Let’s Chat
+        </motion.button>
+      </a>
+    </li>
   </motion.ul>
 )}
 
@@ -251,13 +361,29 @@ const handleDownload = () => {
     transition={{ duration: 0.5 }}
     viewport={{ once: false, amount: 0.3 }}
   >
-    <motion.h1 className="text-5xl md:text-6xl font-bold mb-4" variants={childVariants}>
+    {/* <motion.h1 className="text-5xl md:text-6xl font-bold mb-4" variants={childVariants}>
       I Build Stunning Frontend Interfaces
     </motion.h1>
 
     <motion.p className="text-lg md:text-xl max-w-xl" variants={childVariants}> {displayedText}
     <span className="ml-1 w-1.5 h-6 bg-white animate-blink"></span>
-    </motion.p>
+    </motion.p> */}
+
+    <div className="px-4 md:px-10 lg:px-28 xl:px-36">
+  <motion.h1 className="text-5xl md:text-6xl font-bold mb-4" variants={childVariants}>
+    I Build Stunning Frontend Interfaces
+  </motion.h1>
+{/* </div> */}
+<motion.p
+  className="text-lg md:text-xl max-w-xl mx-auto text-center"
+  variants={childVariants}
+>
+  {displayedText}
+  <span className="ml-1 w-1.5 h-6 bg-white animate-blink"></span>
+</motion.p>
+
+</div>
+
 
     <motion.div className="mt-8 flex flex-wrap gap-6 justify-center" variants={childVariants}>
  
@@ -272,7 +398,7 @@ const handleDownload = () => {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth="2"
+      strokeWidth="3"
       stroke="#B59ED5"
       className="w-5 h-5 relative z-10 transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:rotate-12 group-hover:-translate-y-1 group-hover:drop-shadow-[0_0_6px_#B59ED5]"
     >
@@ -285,6 +411,54 @@ const handleDownload = () => {
 
     <span className="absolute right-4.5 top-1/2 -translate-y-1/2 w-8 h-8 bg-gray-600 rounded-full transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:w-[calc(100%-1rem)] group-hover:h-full group-hover:right-2 z-0" />
   </motion.button>
+
+{/* <motion.button
+  whileHover={{ scale: 1.03 }}
+  className="relative overflow-hidden group flex items-center px-6 py-5 font-semibold rounded-full bg-gray-600 text-white transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] cursor-pointer"
+>
+  <span className="relative z-10 mr-4">Discover More</span>
+
+  <LiaHandPointerSolid
+    className="w-5 h-5 rotate-190 relative z-10 transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:rotate-230 group-hover:-translate-y-1 group-hover:drop-shadow-[0_6px_6px_white]"
+  />
+
+  <span className="absolute right-4.5 top-1/2 -translate-y-1/2 w-8 h-8 bg-[#B59ED5] rounded-full transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:w-[calc(100%-1rem)] group-hover:h-full group-hover:right-2 z-0" />
+</motion.button> */}
+
+<motion.button
+  whileHover={{ scale: 1.03 }}
+  onClick={() => {
+    const aboutSection = document.getElementById("about");
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: "smooth" });
+    }
+  }}
+  className="relative overflow-hidden group flex items-center px-6 py-5 font-semibold rounded-full bg-gray-600 text-white transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] cursor-pointer"
+>
+  <span className="relative z-10 mr-4">Discover More</span>
+
+  <LiaHandPointerSolid
+    className="w-5 h-5 rotate-[190deg] relative z-10 transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:rotate-[230deg] group-hover:-translate-y-1 group-hover:drop-shadow-[0_6px_6px_white]"
+  />
+
+  <span className="absolute right-4.5 top-1/2 -translate-y-1/2 w-8 h-8 bg-[#B59ED5] rounded-full transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:w-[calc(100%-1rem)] group-hover:h-full group-hover:right-2 z-0" />
+</motion.button>
+
+</motion.div>
+
+  </motion.div>
+   
+    </div>
+  );
+};
+
+export default HeroSection;
+
+
+
+
+
+
 
    {/* <motion.button
   whileHover={{ scale: 1.03 }}
@@ -310,26 +484,3 @@ const handleDownload = () => {
 
   <span className="absolute right-4.5 top-1/2 -translate-y-1/2 w-8 h-8 bg-[#B59ED5] rounded-full transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:w-[calc(100%-1rem)] group-hover:h-full group-hover:right-2 z-0" />
 </motion.button> */}
-
-<motion.button
-  whileHover={{ scale: 1.03 }}
-  className="relative overflow-hidden group flex items-center px-6 py-5 font-semibold rounded-full bg-gray-600 text-white transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] cursor-pointer"
->
-  <span className="relative z-10 mr-4">Discover More</span>
-
-  <LiaHandPointerSolid
-    className="w-5 h-5 rotate-190 relative z-10 transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:rotate-250 group-hover:-translate-y-1 group-hover:drop-shadow-[0_0_6px_#B59ED5]"
-  />
-
-  <span className="absolute right-4.5 top-1/2 -translate-y-1/2 w-8 h-8 bg-[#B59ED5] rounded-full transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:w-[calc(100%-1rem)] group-hover:h-full group-hover:right-2 z-0" />
-</motion.button>
-
-</motion.div>
-
-  </motion.div>
-   
-    </div>
-  );
-};
-
-export default HeroSection;

@@ -8,8 +8,8 @@ import Footer from "../Footer/Footer";
 
 const Layout = () => {
   return (
-    // <div className="overflow-x-hidden">
-    <div className="">
+    <div className="overflow-x-hidden">
+    {/* <div className=""> */}
       <HeroSection />
       <div id="about"> <AboutMe /> </div>
       <div id="skills"> <Skills /> </div>
