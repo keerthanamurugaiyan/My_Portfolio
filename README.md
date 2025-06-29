@@ -1,12 +1,68 @@
-# React + Vite
+# 🚀 Keerthana Murugaiyan — Frontend Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my personal portfolio website built with **React JS**, **Tailwind CSS**, and **Framer Motion**. This portfolio showcases my skills, selected projects, and how to get in touch with me.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔗 Live Demo
 
-## Expanding the ESLint configuration
+🌐 [View Portfolio](https://your-live-link.com)  
+_(Replace this with your actual deployed URL)_
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🎯 Features
+
+- ⚡ Full-screen animated hero section
+- 👩‍💻 Smoothly animated “About Me” section
+- 🧠 Skills display with iconography
+- 📂 Project cards with hover reveal effects
+- 📱 Fully responsive design (mobile/tablet/desktop)
+- 📞 Contact section with active social media links
+- ✨ Clean, modern UI using Tailwind CSS and Framer Motion
+
+---
+
+## 🧰 Tech Stack
+
+- **React JS**
+- **Tailwind CSS**
+- **Framer Motion**
+- **React Icons**
+- **Vite** (for fast development)
+
+---
+
+## 📁 Folder Structure
+
+src/
+├── Assets/          # Images, videos, resume, and other static assets
+├── Components/      # Reusable UI components like Navbar, Button, etc.
+├── Pages/           # Main sections/pages – About, Skills, Projects, Contact
+├── Home/            # Hero section and homepage layout
+├── Footer/          # Footer component
+├── App.jsx          # Root component with layout and routing
+├── main.jsx         # Entry point – renders App into the DOM
+└── index.css        # Tailwind base styles and global custom CSS
+
+---
+
+## 🧑‍💼 About Me
+
+I’m a passionate **Frontend Developer** who loves turning ideas into interactive user interfaces. With a strong foundation in modern web technologies and a creative mindset, I focus on building clean, user-friendly, and visually engaging applications.
+
+---
+
+## 📬 Contact
+
+Let’s connect!  
+📧 Email: keerthanamurugaiyan06@example.com  
+🔗 [LinkedIn](https://www.linkedin.com/in/keerthana-murugaiyan-947597303/)  
+
+---
+
+## 📄 License
+
+This project is open source and free to use.
+
+---
