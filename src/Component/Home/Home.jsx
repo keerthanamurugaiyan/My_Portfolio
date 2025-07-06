@@ -5,22 +5,38 @@ import { FaFolder } from "react-icons/fa";
 import { LiaHandPointerSolid } from "react-icons/lia";
 import home from '../../assets/189639-886016299_large.mp4';
 import { saveAs } from "file-saver";
-import resumePDF from "../../assets/KeerthanaMurugaiyan_Resume.pdf"; // Adjust path as needed
+import resumePDF from "../../assets/KeerthanaMurugaiyan_Resume.pdf"; 
+import logo from "../../assets/logo.png"; 
 import { CgMenuHotdog } from "react-icons/cg";
 
 const HeroSection = () => { 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+
   const menuRef = useRef(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setIsScrolled(window.scrollY > 50);
+  //   };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, []);
+
+useEffect(() => {
+  const scrollWrapper = document.getElementById("custom-scroll-wrapper");
+
+  const handleScroll = () => {
+    if (scrollWrapper) {
+      setIsScrolled(scrollWrapper.scrollTop > 50);
+    }
+  };
+
+  scrollWrapper?.addEventListener("scroll", handleScroll);
+  return () => scrollWrapper?.removeEventListener("scroll", handleScroll);
+}, []);
 
   const sentences = [
     "Turning Ideas into Pixel-Perfect Interfaces",
@@ -65,6 +81,46 @@ const HeroSection = () => {
 
     return () => clearTimeout(typingTimeout);
   }, [sentenceIndex]);
+
+useEffect(() => {
+  const scrollWrapper = document.getElementById("custom-scroll-wrapper");
+  const sections = ["home", "about", "skills", "projects", "contact"];
+
+  const handleScroll = () => {
+    if (!scrollWrapper) return;
+
+    const scrollY = scrollWrapper.scrollTop;
+
+    for (let i = 0; i < sections.length; i++) {
+      const section = document.getElementById(sections[i]);
+      if (section) {
+        const offsetTop = section.offsetTop;
+        const offsetHeight = section.offsetHeight;
+
+        if (scrollY >= offsetTop - 80 && scrollY < offsetTop + offsetHeight - 80) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
+    }
+  };
+
+  scrollWrapper?.addEventListener("scroll", handleScroll);
+  return () => scrollWrapper?.removeEventListener("scroll", handleScroll);
+}, []);
+
+
+const scrollToSection = (id) => {
+  const scrollWrapper = document.getElementById("custom-scroll-wrapper");
+  const section = document.getElementById(id);
+  const yOffset = -80;
+
+  if (scrollWrapper && section) {
+    const y = section.offsetTop + yOffset;
+    scrollWrapper.scrollTo({ top: y, behavior: "smooth" });
+  }
+};
+
 
   useEffect(() => {
   const handleClickOutside = (event) => {
@@ -114,6 +170,7 @@ const handleDownload = () => {
 };
 
   return (
+    
     <div className="relative w-full h-screen overflow-hidden">
       <video
         autoPlay
@@ -130,33 +187,100 @@ const handleDownload = () => {
         }`}
       />
 
-      <div
+      {/* <div
         className={`fixed z-50 transition-all duration-500 ${
           isScrolled
             ? 'top-10 left-10 right-10 rounded-2xl shadow-md bg-[#40354A]/75 px-6 py-4'
             : 'top-0 left-0 right-0 w-full px-6 py-4'
         } flex justify-between items-center`}
-      >
+      > */}
 
-        <h1 className="text-white text-2xl font-bold">YourLogo</h1>
+<div
+  className={`fixed z-50 transition-all duration-500 ${
+    isScrolled
+      ? 'top-10 left-10 right-10 rounded-2xl shadow-md bg-[#40354A]/75 px-6 py-4'
+      : 'top-0 left-0 right-0 w-full px-6 py-4'
+  } flex justify-between items-center`}
+>
+
+        {/* <h1 className="text-white text-2xl font-bold">Your Logo</h1> */}
+        {/* <h1 className="w-[100px] sm:w-[120px] md:w-[140px] ms-10">
+  <img src={logo} alt="Logo" className="w-full h-25 object-contain" />
+</h1> */}
+
+<h1
+  className={`lg:ms-10 transition-all duration-500 ${
+    isScrolled ? 'w-[80px] md:w-[90px]' : 'w-[140px] md:w-[160px]'
+  }`}
+>
+  {/* <img
+    src={isScrolled ? logo : logo}
+    alt="Logo"
+    className={`object-contain transition-all duration-500 ${
+      isScrolled ? 'h-[40px]' : 'h-[100px]'
+    }`}
+  /> */}
+  <img
+  src={logo}
+  alt="Logo"
+  className={`object-contain transition-all duration-500 ${
+    isScrolled ? 'h-[40px]' : 'h-[60px] sm:h-[100px]'
+  }`}
+/>
+
+</h1>
 
         <div className="lg:hidden">
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white text-2xl">
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white text-2xl md:me-10">
             {/* {isMenuOpen ? <FiX /> : <FiMenu />} */}
             {/* <FiMenu /> */}
             <CgMenuHotdog />
           </button>
         </div>
 
-        <ul className="hidden lg:flex gap-6 text-white font-bold">
-          <li><a href="#home" className="hover:text-[#B59ED5]">Home</a></li>
-          <li><a href="#about" className="hover:text-[#B59ED5]">About</a></li>
-          <li><a href="#skills" className="hover:text-[#B59ED5]">Skills</a></li>
-          <li><a href="#projects" className="hover:text-[#B59ED5]">Projects</a></li>
-          <li><a href="#contact" className="hover:text-[#B59ED5]">Contact</a></li>
-        </ul>
+{/* <ul className="hidden lg:flex gap-6 text-white font-bold">
+  {["home", "about", "skills", "projects", "contact"].map((item) => (
+    <li key={item}>
+      <button
+        // onClick={() => {
+        //   const section = document.getElementById(item);
+        //   if (section) {
+        //     const yOffset = -80; // offset for fixed navbar
+        //     const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
-<div className="hidden lg:block">
+        //     window.scrollTo({ top: y, behavior: "smooth" });
+        //   }
+        // }}
+        // className={`cursor-pointer transition-colors duration-300 ${
+        //   activeSection === item ? "text-[#B59ED5]" : "hover:text-[#B59ED5]"
+        // }`}
+  onClick={() => scrollToSection(item)}
+  className={`cursor-pointer transition-colors duration-300 ${
+    activeSection === item ? "text-[#B59ED5]" : "hover:text-[#B59ED5]"
+  }`}
+>
+  {item.charAt(0).toUpperCase() + item.slice(1)}
+      </button>
+    </li>
+  ))}
+</ul> */}
+
+<ul className="hidden lg:flex gap-6 text-white font-bold">
+  {["home", "about", "skills", "projects", "contact"].map((item) => (
+    <li key={item}>
+      <button
+        onClick={() => scrollToSection(item)} // use your scroll function
+        className={`cursor-pointer transition-colors duration-300 hover:text-[#B59ED5] ${
+          activeSection === item ? "text-[#B59ED5]" : "text-white"
+        }`}
+      >
+        {item.charAt(0).toUpperCase() + item.slice(1)}
+      </button>
+    </li>
+  ))}
+</ul>
+
+<div className="hidden lg:block lg:me-10">
         <a
   href="https://www.linkedin.com/in/keerthana-murugaiyan-947597303/"  
   target="_blank"
@@ -235,56 +359,6 @@ const handleDownload = () => {
 
       </div>
 
-      {/* {isMenuOpen && (
- <motion.ul
-  initial={{ opacity: 0, y: -10 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.3 }}
-  className="lg:hidden absolute top-20 left-1/2 transform -translate-x-1/2 bg-[#40354A]/95 text-white text-center py-6 px-6 rounded-xl shadow-md z-40 w-[90%] "
->
-
-   <button
-  onClick={() => setIsMenuOpen(false)}
-  className="absolute top-3 right-4 text-white text-2xl"
->
-  <FiX />
-</button>
-
-    {["home", "about", "skills", "projects", "contact"].map((item) => (
-      <li key={item} className="py-2">
-        <a
-          href={`#${item}`}
-          onClick={() => setIsMenuOpen(false)}
-          className="block w-full"
-        >
-          {item.charAt(0).toUpperCase() + item.slice(1)}
-        </a>
-      </li>
-    ))}
-    <li className="pt-4">
-      <a
-        href="https://www.linkedin.com/in/keerthana-murugaiyan-947597303/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block"
-      >
-        <motion.button
-          whileHover={{
-            scale: 1.05,
-            backgroundColor: "#B59ED5",
-            boxShadow: "0 0 16px rgba(181, 158, 213, 0.4)",
-          }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          className="w-full py-3 px-6 rounded-full bg-[#B59ED5] text-white text-sm font-medium shadow-md"
-        >
-          Let’s Chat
-        </motion.button>
-      </a>
-    </li>
-  </motion.ul>
-)} */}
-
 {isMenuOpen && (
   <motion.ul
     ref={menuRef}
@@ -293,12 +367,7 @@ const handleDownload = () => {
     transition={{ duration: 0.3 }}
     className="lg:hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#40354A]/95 text-white text-center py-6 px-6 rounded-xl shadow-md z-40 w-[90%] max-w-md"
   >
-    {/* <button
-      onClick={() => setIsMenuOpen(false)}
-      className="absolute top-3 right-4 text-white text-2xl"
-    >
-      <FiX />
-    </button> */}
+    
     <motion.button
   onClick={() => setIsMenuOpen(false)}
   whileHover={{ rotate: 180, scale: 1.1 }}
@@ -361,16 +430,11 @@ const handleDownload = () => {
     transition={{ duration: 0.5 }}
     viewport={{ once: false, amount: 0.3 }}
   >
-    {/* <motion.h1 className="text-5xl md:text-6xl font-bold mb-4" variants={childVariants}>
-      I Build Stunning Frontend Interfaces
-    </motion.h1>
-
-    <motion.p className="text-lg md:text-xl max-w-xl" variants={childVariants}> {displayedText}
-    <span className="ml-1 w-1.5 h-6 bg-white animate-blink"></span>
-    </motion.p> */}
 
     <div className="px-4 md:px-10 lg:px-28 xl:px-36">
-  <motion.h1 className="text-5xl md:text-6xl font-bold mb-4" variants={childVariants}>
+  <motion.h1 className="text-5xl md:text-6xl font-bold mb-4"
+   style={{ marginTop: window.innerWidth <= 320 ? '3rem' : '0' }}
+   variants={childVariants}>
     I Build Stunning Frontend Interfaces
   </motion.h1>
 {/* </div> */}
@@ -412,19 +476,6 @@ const handleDownload = () => {
     <span className="absolute right-4.5 top-1/2 -translate-y-1/2 w-8 h-8 bg-gray-600 rounded-full transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:w-[calc(100%-1rem)] group-hover:h-full group-hover:right-2 z-0" />
   </motion.button>
 
-{/* <motion.button
-  whileHover={{ scale: 1.03 }}
-  className="relative overflow-hidden group flex items-center px-6 py-5 font-semibold rounded-full bg-gray-600 text-white transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] cursor-pointer"
->
-  <span className="relative z-10 mr-4">Discover More</span>
-
-  <LiaHandPointerSolid
-    className="w-5 h-5 rotate-190 relative z-10 transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:rotate-230 group-hover:-translate-y-1 group-hover:drop-shadow-[0_6px_6px_white]"
-  />
-
-  <span className="absolute right-4.5 top-1/2 -translate-y-1/2 w-8 h-8 bg-[#B59ED5] rounded-full transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:w-[calc(100%-1rem)] group-hover:h-full group-hover:right-2 z-0" />
-</motion.button> */}
-
 <motion.button
   whileHover={{ scale: 1.03 }}
   onClick={() => {
@@ -459,6 +510,98 @@ export default HeroSection;
 
 
 
+
+
+
+
+
+
+
+  {/* <ul className="hidden lg:flex gap-6 text-white font-bold">
+          <li><a href="#home" className="hover:text-[#B59ED5]">Home</a></li>
+          <li><a href="#about" className="hover:text-[#B59ED5]">About</a></li>
+          <li><a href="#skills" className="hover:text-[#B59ED5]">Skills</a></li>
+          <li><a href="#projects" className="hover:text-[#B59ED5]">Projects</a></li>
+          <li><a href="#contact" className="hover:text-[#B59ED5]">Contact</a></li>
+        </ul> */}
+
+{/* <button
+      onClick={() => setIsMenuOpen(false)}
+      className="absolute top-3 right-4 text-white text-2xl"
+    >
+      <FiX />
+    </button> */}
+
+{/* <motion.button
+  whileHover={{ scale: 1.03 }}
+  className="relative overflow-hidden group flex items-center px-6 py-5 font-semibold rounded-full bg-gray-600 text-white transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] cursor-pointer"
+>
+  <span className="relative z-10 mr-4">Discover More</span>
+
+  <LiaHandPointerSolid
+    className="w-5 h-5 rotate-190 relative z-10 transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:rotate-230 group-hover:-translate-y-1 group-hover:drop-shadow-[0_6px_6px_white]"
+  />
+
+  <span className="absolute right-4.5 top-1/2 -translate-y-1/2 w-8 h-8 bg-[#B59ED5] rounded-full transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:w-[calc(100%-1rem)] group-hover:h-full group-hover:right-2 z-0" />
+</motion.button> */}
+
+    {/* <motion.h1 className="text-5xl md:text-6xl font-bold mb-4" variants={childVariants}>
+      I Build Stunning Frontend Interfaces
+    </motion.h1>
+
+    <motion.p className="text-lg md:text-xl max-w-xl" variants={childVariants}> {displayedText}
+    <span className="ml-1 w-1.5 h-6 bg-white animate-blink"></span>
+    </motion.p> */}
+
+ {/* {isMenuOpen && (
+ <motion.ul
+  initial={{ opacity: 0, y: -10 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.3 }}
+  className="lg:hidden absolute top-20 left-1/2 transform -translate-x-1/2 bg-[#40354A]/95 text-white text-center py-6 px-6 rounded-xl shadow-md z-40 w-[90%] "
+>
+
+   <button
+  onClick={() => setIsMenuOpen(false)}
+  className="absolute top-3 right-4 text-white text-2xl"
+>
+  <FiX />
+</button>
+
+    {["home", "about", "skills", "projects", "contact"].map((item) => (
+      <li key={item} className="py-2">
+        <a
+          href={`#${item}`}
+          onClick={() => setIsMenuOpen(false)}
+          className="block w-full"
+        >
+          {item.charAt(0).toUpperCase() + item.slice(1)}
+        </a>
+      </li>
+    ))}
+    <li className="pt-4">
+      <a
+        href="https://www.linkedin.com/in/keerthana-murugaiyan-947597303/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block"
+      >
+        <motion.button
+          whileHover={{
+            scale: 1.05,
+            backgroundColor: "#B59ED5",
+            boxShadow: "0 0 16px rgba(181, 158, 213, 0.4)",
+          }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          className="w-full py-3 px-6 rounded-full bg-[#B59ED5] text-white text-sm font-medium shadow-md"
+        >
+          Let’s Chat
+        </motion.button>
+      </a>
+    </li>
+  </motion.ul>
+)} */}
 
    {/* <motion.button
   whileHover={{ scale: 1.03 }}

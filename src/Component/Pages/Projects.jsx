@@ -169,7 +169,7 @@ const Projects = () => {
                         href={project.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-cyan-500 text-sm font-medium underline hover:text-cyan-400 transition mt-1 inline-block"
+                        className="text-cyan-500 text-sm font-medium underline hover:text-cyan-400 transition mt-3 inline-block"
                       >
                         Visit Website →
                       </a>
