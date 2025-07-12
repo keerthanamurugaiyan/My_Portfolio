@@ -107,7 +107,7 @@ function Contact() {
                     scale: 0.95,
                     boxShadow: "0 0 8px rgba(181, 158, 213, 0.9)",
                   }}
-                  className="w-full mt-4 relative bg-[#B59ED5] hover:bg-[#a176c9] text-white font-bold py-3 px-6 rounded-full transition duration-300 overflow-hidden"
+                  className="w-full mt-4 cursor-pointer relative bg-[#B59ED5] hover:bg-[#a176c9] text-white font-bold py-3 px-6 rounded-full transition duration-300 overflow-hidden"
                 >
                   <span className="relative z-10">Send Message</span>
                   <motion.div

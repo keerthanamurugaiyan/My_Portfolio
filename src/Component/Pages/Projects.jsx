@@ -9,7 +9,7 @@ const projects = [
     title: "Lendwise – Smart Lending Platform UI",
     shortDesc: "A secure and intuitive lending platform UI built with React.",
     fullDesc:
-      "A secure and intuitive lending platform interface built using ReactJS, Material-UI, and Bootstrap. Includes modules for loan requests, approvals, and repayment tracking. Integrated API calls for seamless data flow and JWT-based user authentication. Features an admin panel for monitoring activities, user verification, and dispute handling.",
+      "A secure and intuitive lending platform interface built using ReactJS and Bootstrap. Includes modules for loan requests, approvals, and repayment tracking. Integrated API calls for seamless data flow and JWT-based user authentication. Features an admin panel for monitoring activities, user verification, and dispute handling.",
     image: lending,
     url: "#"
   },
@@ -18,7 +18,7 @@ const projects = [
     // title: "Alwin Digital – Modern Branding Website",
     shortDesc: "Responsive static site for a digital branding company.",
     fullDesc:
-      "A custom digital branding website developed using ReactJS. Fully responsive and optimized for performance. Integrated React Icons and CSS animations. Hosted using Firebase with a focus on modern UI, branding consistency, and user accessibility.",
+      "A custom digital branding website developed using ReactJS and Bootstrap for responsive layout and styling. Fully optimized for performance and user accessibility. Integrated React Icons, CSS animations, and Bootstrap utilities for a modern, mobile-first UI. Hosted on Firebase, with a strong focus on branding consistency and smooth user experience.",
     image: alwinDigital,
     url: "https://allwindigital-vadapalani.web.app"
   },
@@ -26,7 +26,7 @@ const projects = [
     title: "Food Application - Dynamic Delivery UI",
     shortDesc: "React-based food delivery app with filterable UI and cart.",
     fullDesc:
-      "A visually engaging food delivery UI built with ReactJS. Features filterable category views, dynamic food cards, and cart management. Responsive layout with smooth interactions. Built with scalable components for future expansion.",
+      "A visually engaging food delivery UI built with ReactJS and Material-UI. Features filterable category views, dynamic food cards, and cart management. Responsive layout with smooth interactions. Built with scalable components for future expansion.",
     image: foodApplication,
     url: "#"
   }
@@ -149,7 +149,7 @@ const Projects = () => {
             <div key={i}>
 
 
-              <div className="relative bg-white rounded-2xl shadow-xl w-[280px] xxl:w-[300px] overflow-visible transition-all duration-300 hover:h-[450px] h-[270px] group hidden lg:block">
+              <div className="relative bg-white rounded-2xl shadow-xl w-[280px] xxl:w-[300px] overflow-visible transition-all duration-300 hover:h-[510px] h-[270px] group hidden lg:block">
 
                 <div className="absolute -top-16 left-3 w-[255px] xxl:w-[300px] h-[140px] xxl:h-[160px] shadow-lg z-10 rounded-2xl overflow-hidden">
                   <img
@@ -177,7 +177,7 @@ const Projects = () => {
                   </div>
 
                   <div className="absolute transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2">
-                    <h3 className="text-xl font-semibold text-cyan-700 mb-1 mt-60">{project.title}</h3>
+                    <h3 className="text-xl font-semibold text-cyan-700 mb-1 mt-70">{project.title}</h3>
                     <p className="text-md p-5 text-gray-700 mb-2">{project.fullDesc}</p>
                     {project.url && project.url !== "#" && (
                       <a

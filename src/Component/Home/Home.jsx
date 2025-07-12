@@ -8,6 +8,7 @@ import { saveAs } from "file-saver";
 import resumePDF from "../../assets/KeerthanaMurugaiyan_Resume.pdf"; 
 import logo from "../../assets/logo.png"; 
 import { CgMenuHotdog } from "react-icons/cg";
+  import { Sparkles } from './Sparkles';
 
 const HeroSection = () => { 
   const [isScrolled, setIsScrolled] = useState(false);
@@ -198,7 +199,7 @@ const handleDownload = () => {
 <div
   className={`fixed z-50 transition-all duration-500 ${
     isScrolled
-      ? 'top-10 left-10 right-10 rounded-2xl shadow-md bg-[#40354A]/75 px-6 py-4'
+      ? 'top-10 left-10 right-13 rounded-2xl shadow-md bg-[#40354A]/75 px-6 py-2'
       : 'top-0 left-0 right-0 w-full px-6 py-4'
   } flex justify-between items-center`}
 >
@@ -432,11 +433,49 @@ const handleDownload = () => {
   >
 
     <div className="px-4 md:px-10 lg:px-28 xl:px-36">
-  <motion.h1 className="text-5xl md:text-6xl font-bold mb-4"
+  {/* <motion.h1 className="text-5xl md:text-6xl font-bold mb-4"
    style={{ marginTop: window.innerWidth <= 320 ? '3rem' : '0' }}
    variants={childVariants}>
     I Build Stunning Frontend Interfaces
-  </motion.h1>
+  </motion.h1> */}
+
+{/* <motion.h1
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1 }}
+  className="text-white text-5xl md:text-6xl font-bold text-center mb-5"
+>
+  <Sparkles>I Build Stunning Frontend Interfaces</Sparkles>
+</motion.h1> */}
+
+{/* <motion.h1
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1 }}
+  className="text-white text-4xl md:text-5xl font-semibold text-center leading-snug mb-5"
+>
+  <Sparkles>
+    I'm <span className="text-[#B59ED5] font-bold">Keerthana Murugaiyan</span>,<br />
+    a Front-End Developer
+  </Sparkles>
+</motion.h1> */}
+
+<motion.h1
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1 }}
+  className="text-white text-4xl md:text-5xl font-semibold text-center leading-snug mb-5"
+>
+  <Sparkles>
+    I'm{" "}
+    <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#B59ED5] via-white to-[#B59ED5]">
+      Keerthana Murugaiyan
+    </span>
+    ,<br />
+    a Front-End Developer
+  </Sparkles>
+</motion.h1>
+
 {/* </div> */}
 <motion.p
   className="text-lg md:text-xl max-w-xl mx-auto text-center"
