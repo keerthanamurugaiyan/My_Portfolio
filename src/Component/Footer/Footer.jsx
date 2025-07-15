@@ -173,15 +173,26 @@ const Footer = () => {
           transition={{ duration: 1 }}
         >
         <div className="flex flex-col items-center justify-center text-center">
-<div className="flex items-center space-x-1">
-  <img src={logo} alt="Logo" className="w-10 h-10 object-contain" />
+{/* <div className="flex items-center space-x-">
+  <img src={logo} alt="Logo" className="w-13 h-13 object-contain" />
   <div
     className="text-md text-white italic"
     style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 600 }}
   >
     Keerthana Murugaiyan
   </div>
+</div> */}
+
+<div className="flex items-center space-x-">
+  <img src={logo} alt="Logo" className="w-12 h-12 object-contain" />
+  <span
+    className="text-lg italic font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#B59ED5] via-white to-[#B59ED5]"
+    style={{ fontFamily: "'Great Vibes', cursive" }}
+  >
+    Keerthana Murugaiyan
+  </span>
 </div>
+
 
 {/* <div className="flex items-center space-x-1">
   <img src={logo} alt="Logo" className="w-10 h-10 object-contain" />
@@ -199,7 +210,7 @@ const Footer = () => {
     </div>
   </Sparkles>
 </div> */}
-  <p className="mt-2 text-gray-400">
+  <p className="mt- text-gray-400">
     Thank you for visiting my personal portfolio 💜
   </p>
   <p className="mt-2 text-gray-400">
@@ -292,10 +303,19 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
+      <motion.p
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1 }}
+  className="text-sm text-gray-500 text-center"
+>
       <div className="mt-10 border-t border-gray-700 pt-4 text-sm text-center text-gray-400">
-        <span className="text-red-500 mr-1">❤</span> Designed by{" "}
-        <span className="font-bold">@Keerthana Murugaiyan</span>
-      </div>
+        <span className="text-red-500 mr-1">❤</span>  Designed & Built by{" "}
+        {/* <span className="font-bold">@Keerthana Murugaiyan</span> */}
+        <span className="font-bold">@Keerthana Murugaiyan</span> © {new Date().getFullYear()}
+        {/* <p>Built with ❤️ by <span className="font-bold text-[#B59ED5]">@Keerthana Murugaiyan</span> </p> */}
+     </div>
+      </motion.p>
     </motion.footer>
   );
 };

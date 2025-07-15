@@ -26,7 +26,7 @@ const projects = [
     title: "Food Application - Dynamic Delivery UI",
     shortDesc: "React-based food delivery app with filterable UI and cart.",
     fullDesc:
-      "A visually engaging food delivery UI built with ReactJS and Material-UI. Features filterable category views, dynamic food cards, and cart management. Responsive layout with smooth interactions. Built with scalable components for future expansion.",
+      "A responsive food delivery UI built with React.js and Material-UI, featuring filterable categories, dynamic food cards, and cart management. Used Redux-Saga for smooth state handling and integrated Formik with validation. Secured with authentication, connected to RESTful APIs, and styled with pixel-perfect layouts using CSS, Bootstrap, and MUI.",
     image: foodApplication,
     url: "#"
   }
@@ -131,7 +131,7 @@ const Projects = () => {
 
     
 
-<section className="bg-[#f9fafb] py-10 px-6">
+<section className=" py-20 px-6">
   <div className="w-full flex justify-center">
     <div
       id="projects"
@@ -178,7 +178,7 @@ const Projects = () => {
 
                   <div className="absolute transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2">
                     <h3 className="text-xl font-semibold text-cyan-700 mb-1 mt-70">{project.title}</h3>
-                    <p className="text-md p-5 text-gray-700 mb-2">{project.fullDesc}</p>
+                    <p className="text-md p-5 text-gray-700">{project.fullDesc}</p>
                     {project.url && project.url !== "#" && (
                       <a
                         href={project.url}

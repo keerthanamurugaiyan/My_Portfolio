@@ -22,7 +22,7 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="py-10 bg-white relative">
+    <section id="contact" className="py-10 relative">
       <div className="max-w-xl mx-auto px-4">
         
         <h2 className="text-4xl font-bold text-gray-800 text-center mb-3">Contact</h2>

@@ -199,7 +199,7 @@ const handleDownload = () => {
 <div
   className={`fixed z-50 transition-all duration-500 ${
     isScrolled
-      ? 'top-10 left-10 right-13 rounded-2xl shadow-md bg-[#40354A]/75 px-6 py-2'
+      ? 'top-10 left-10 right-13 rounded-2xl shadow-md bg-[#40354A]/75 px-6 py-1'
       : 'top-0 left-0 right-0 w-full px-6 py-4'
   } flex justify-between items-center`}
 >
@@ -225,7 +225,7 @@ const handleDownload = () => {
   src={logo}
   alt="Logo"
   className={`object-contain transition-all duration-500 ${
-    isScrolled ? 'h-[40px]' : 'h-[60px] sm:h-[100px]'
+    isScrolled ? 'h-[60px]' : 'h-[60px] sm:h-[100px]'
   }`}
 />
 

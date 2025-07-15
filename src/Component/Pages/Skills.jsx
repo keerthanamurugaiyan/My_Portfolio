@@ -99,7 +99,7 @@ const renderStars = (rating, color) => {
 
 const Skills = () => {
   return (
-    <section className="bg-[#f9fafb] py-1 px-6 overflow-hidden">
+    <section className=" py-1 px-6 overflow-hidden">
 
       <h2 className="text-4xl font-bold text-center text-gray-800 mb-3">My Skills</h2>
 
