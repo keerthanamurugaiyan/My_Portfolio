@@ -214,13 +214,19 @@ const handleDownload = () => {
     isScrolled ? 'w-[80px] md:w-[90px]' : 'w-[140px] md:w-[160px]'
   }`}
 >
+
   {/* <img
-    src={isScrolled ? logo : logo}
-    alt="Logo"
-    className={`object-contain transition-all duration-500 ${
-      isScrolled ? 'h-[40px]' : 'h-[100px]'
-    }`}
-  /> */}
+  src={logo}
+  alt="Logo"
+  onClick={() => {
+    window.location.reload(); // This will refresh and go to the top
+  }}
+  className={`cursor-pointer object-contain transition-all duration-500 ${
+    isScrolled ? 'h-[60px]' : 'h-[60px] sm:h-[100px]'
+  }`}
+/> */}
+
+<a href="#home">
   <img
   src={logo}
   alt="Logo"
@@ -228,6 +234,7 @@ const handleDownload = () => {
     isScrolled ? 'h-[60px]' : 'h-[60px] sm:h-[100px]'
   }`}
 />
+</a>
 
 </h1>
 
@@ -464,6 +471,7 @@ const handleDownload = () => {
   initial={{ opacity: 0, y: 20 }}
   whileInView={{ opacity: 1, y: 0 }}
   transition={{ duration: 1 }}
+    // className="text-white text-4xl md:text-5xl font-semibold text-center leading-snug mb-5 mt-16 md:mt-0"
   className="text-white text-4xl md:text-5xl font-semibold text-center leading-snug mb-5"
 >
   <Sparkles>

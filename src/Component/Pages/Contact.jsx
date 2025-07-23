@@ -56,7 +56,9 @@ function Contact() {
                   <Field
                     name="name"
                     type="text"
-                    placeholder="John"
+                    // placeholder="John"
+                    placeholder="Your Good Name"
+                    autoComplete="off" 
                     className={`w-full mt-2 p-3 rounded-md bg-white/90 text-gray-800 focus:outline-none focus:ring-2 ${
                       errors.name && touched.name
                         ? "focus:ring-red-400 border border-red-400"
@@ -71,7 +73,9 @@ function Contact() {
                   <Field
                     name="email"
                     type="email"
-                    placeholder="example@gmail.com"
+                    autoComplete="off" 
+                    // placeholder="example@gmail.com"
+                    placeholder="Reachable email ID"
                     className={`w-full mt-2 p-3 rounded-md bg-white/90 text-gray-800 focus:outline-none focus:ring-2 ${
                       errors.email && touched.email
                         ? "focus:ring-red-400 border border-red-400"
@@ -87,7 +91,9 @@ function Contact() {
                     as="textarea"
                     name="message"
                     rows="4"
-                    placeholder="Write your message..."
+                    autoComplete="off" 
+                    // placeholder="Write your message..."
+                    placeholder="Your thoughts, feedback, or project idea..."
                     className={`w-full mt-2 p-3 rounded-md bg-white/90 text-gray-800 focus:outline-none focus:ring-2 ${
                       errors.message && touched.message
                         ? "focus:ring-red-400 border border-red-400"

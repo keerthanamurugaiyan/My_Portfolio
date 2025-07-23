@@ -131,7 +131,7 @@ const Projects = () => {
 
     
 
-<section className=" py-20 px-6">
+<section className="py-20 px-6">
   <div className="w-full flex justify-center">
     <div
       id="projects"
@@ -176,7 +176,8 @@ const Projects = () => {
                     )}
                   </div>
 
-                  <div className="absolute transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2">
+                  {/* <div className="absolute transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2"> */}
+                  <div className="absolute opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out delay-100">
                     <h3 className="text-xl font-semibold text-cyan-700 mb-1 mt-70">{project.title}</h3>
                     <p className="text-md p-5 text-gray-700">{project.fullDesc}</p>
                     {project.url && project.url !== "#" && (

@@ -70,13 +70,23 @@ const AboutMe = () => {
         >
           <motion.div className="text-black p-6 md:p-8 rounded-2xl">
 
-<h3 className="text-3xl font-semibold text-gray-800 mb-4">
+{/* <h3 className="text-3xl font-semibold text-gray-800 mb-4">
   I craft clean, interactive UIs as a{" "}
   <span className="text-[#a176c9] font-bold inline-flex items-center gap-1 ml-0 sm:ml-1 flex-wrap">
     <span className="whitespace-nowrap text-lg sm:text-[10rem] md:text-3xl">
       Frontend Developer
     </span>
     <IoLogoReact className="text-[#61DBFB] text-2xl sm:text-3xl drop-shadow-lg animate-pulse" />
+  </span>
+</h3> */}
+
+<h3 className="text-3xl font-semibold text-gray-800 mb-4">
+  I craft clean, interactive UIs as a{" "}
+  <span className="text-[#a176c9] font-bold inline-flex items-center gap-1 flex-wrap">
+    <span className="whitespace-nowrap text-lg md:text-3xl">
+      Frontend Developer
+    </span>
+    <IoLogoReact className="text-[#61DBFB] text-2xl md:text-3xl drop-shadow-lg animate-pulse" />
   </span>
 </h3>
 
