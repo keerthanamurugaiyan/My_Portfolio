@@ -8,7 +8,7 @@ import { saveAs } from "file-saver";
 import resumePDF from "../../assets/KeerthanaMurugaiyan_Resume.pdf"; 
 import logo from "../../assets/logo.png"; 
 import { CgMenuHotdog } from "react-icons/cg";
-  import { Sparkles } from './Sparkles';
+import { Sparkles } from './Sparkles';
 
 const HeroSection = () => { 
   const [isScrolled, setIsScrolled] = useState(false);
