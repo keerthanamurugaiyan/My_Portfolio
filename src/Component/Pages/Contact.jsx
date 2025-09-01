@@ -24,7 +24,7 @@ function Contact() {
   return (
     <section id="contact" className="py-10 relative">
       <div className="max-w-xl mx-auto px-4">
-        
+
         <h2 className="text-4xl font-bold text-gray-800 text-center mb-3">Contact</h2>
 
         <p className="text-center text-gray-600 text-md mb-10 italic">
@@ -56,14 +56,12 @@ function Contact() {
                   <Field
                     name="name"
                     type="text"
-                    // placeholder="John"
                     placeholder="Your Good Name"
-                    autoComplete="off" 
-                    className={`w-full mt-2 p-3 rounded-md bg-white/90 text-gray-800 focus:outline-none focus:ring-2 ${
-                      errors.name && touched.name
+                    autoComplete="off"
+                    className={`w-full mt-2 p-3 rounded-md bg-white/90 text-gray-800 focus:outline-none focus:ring-2 ${errors.name && touched.name
                         ? "focus:ring-red-400 border border-red-400"
                         : "focus:ring-[#B59ED5]"
-                    }`}
+                      }`}
                   />
                   <ErrorMessage name="name" component="p" className="text-sm text-red-500 mt-1" />
                 </div>
@@ -73,14 +71,12 @@ function Contact() {
                   <Field
                     name="email"
                     type="email"
-                    autoComplete="off" 
-                    // placeholder="example@gmail.com"
+                    autoComplete="off"
                     placeholder="Reachable email ID"
-                    className={`w-full mt-2 p-3 rounded-md bg-white/90 text-gray-800 focus:outline-none focus:ring-2 ${
-                      errors.email && touched.email
+                    className={`w-full mt-2 p-3 rounded-md bg-white/90 text-gray-800 focus:outline-none focus:ring-2 ${errors.email && touched.email
                         ? "focus:ring-red-400 border border-red-400"
                         : "focus:ring-[#B59ED5]"
-                    }`}
+                      }`}
                   />
                   <ErrorMessage name="email" component="p" className="text-sm text-red-500 mt-1" />
                 </div>
@@ -91,14 +87,12 @@ function Contact() {
                     as="textarea"
                     name="message"
                     rows="4"
-                    autoComplete="off" 
-                    // placeholder="Write your message..."
+                    autoComplete="off"
                     placeholder="Your thoughts, feedback, or project idea..."
-                    className={`w-full mt-2 p-3 rounded-md bg-white/90 text-gray-800 focus:outline-none focus:ring-2 ${
-                      errors.message && touched.message
+                    className={`w-full mt-2 p-3 rounded-md bg-white/90 text-gray-800 focus:outline-none focus:ring-2 ${errors.message && touched.message
                         ? "focus:ring-red-400 border border-red-400"
                         : "focus:ring-[#B59ED5]"
-                    }`}
+                      }`}
                   />
                   <ErrorMessage name="message" component="p" className="text-sm text-red-500 mt-1" />
                 </div>

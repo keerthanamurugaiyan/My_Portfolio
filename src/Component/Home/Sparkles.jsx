@@ -16,7 +16,7 @@ const generateSparkle = (color = '#FFFFFF') => ({
   },
 });
 
-const SPARKLE_LIFETIME = 600; // ms
+const SPARKLE_LIFETIME = 600;
 
 function SparkleInstance({ sparkle }) {
   return (

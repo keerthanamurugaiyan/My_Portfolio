@@ -111,113 +111,61 @@ const Skills = () => {
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto">
         {skills.map((skill, i) => (
 
-          // <motion.div
-          //   key={i}
-          //   initial={{
-          //     opacity: 0,
-          //     x: i % 2 === 0 ? -50 : 50,
-          //     y: i % 3 === 0 ? -30 : 30,
-          //   }}
-          //   whileInView={{ opacity: 1, x: 0, y: 0 }}
-          //   transition={{ duration: 0.6, delay: i * 0.1, type: 'spring', stiffness: 100 }}
-          //   // viewport={{ once: true, amount: 0.3 }}
-          //   viewport={{ once: false, amount: 0.3 }}
-          //   className="relative bg-[#1f2937] text-white rounded-2xl shadow-xl p-6 flex flex-col items-center justify-between h-52 overflow-hidden group"
-          //   onMouseMove={(e) => {
-          //     const card = e.currentTarget;
-          //     const rect = card.getBoundingClientRect();
-          //     const x = e.clientX - rect.left;
-          //     const y = e.clientY - rect.top;
-          //     const rotateY = ((x / rect.width) - 0.5) * 40;
-          //     const rotateX = ((0.5 - y / rect.height)) * 40;
-          //     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-          //   }}
-          //   onMouseLeave={(e) => {
-          //     e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
-          //   }}
-          // >
-          //   <div className="mb-4">{skill.icon}</div>
-          //   <h3 className="text-lg font-semibold mb-2">{skill.name}</h3>
+          <motion.div
+            key={i}
+            initial={{
+              opacity: 0,
+              x: i % 2 === 0 ? -50 : 50,
+              y: i % 3 === 0 ? -30 : 30,
+            }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }}
+            transition={{ duration: 0.6, delay: i * 0.1, type: 'spring', stiffness: 100 }}
+            viewport={{ once: false, amount: 0.3 }}
+            className="group [perspective:1000px] w-full h-52"
+          >
+            <div
+              className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] rounded-2xl shadow-xl"
+            >
+              {/* Front Side */}
+              <div className="absolute inset-0 bg-[#1f2937] text-white rounded-2xl p-6 flex flex-col items-center justify-between [backface-visibility:hidden]">
+                <div className="mb-4">{skill.icon}</div>
+                <h3 className="text-lg font-semibold mb-2">{skill.name}</h3>
+                {renderStars(skill.rating, skill.color)}
+                <p className="text-sm">{skill.rating}/5</p>
+                <div className="w-full h-2 rounded-full bg-gray-700 mt-2">
+                  <div
+                    className="h-full rounded-full"
+                    style={{ width: `${(skill.rating / 5) * 100}%`, backgroundColor: skill.color }}
+                  ></div>
+                </div>
+              </div>
 
-          //   {renderStars(skill.rating, skill.color)}
-          //   <p className="text-sm">{skill.rating}/5</p>
+              {/* Back Side with SMOOTH Mouse Tilt */}
+              <div
+                className="absolute inset-0 bg-[#1f2937] text-white rounded-2xl p-6 flex flex-col items-center justify-center text-center [transform:rotateY(180deg)] [backface-visibility:hidden]"
+                style={{
+                  transition: 'transform 0.15s ease-out',
+                  willChange: 'transform',
+                }}
+                onMouseMove={(e) => {
+                  const card = e.currentTarget;
+                  const rect = card.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  const rotateY = ((x / rect.width) - 0.5) * 30;
+                  const rotateX = ((0.5 - y / rect.height)) * 30;
 
-          //   <div className="w-full h-2 rounded-full bg-gray-700 mt-2">
-          //     <div
-          //       className="h-full rounded-full"
-          //       style={{ width: `${(skill.rating / 5) * 100}%`, backgroundColor: skill.color }}
-          //     ></div>
-          //   </div>
-
-          //   <motion.div
-          //     initial={{ opacity: 0, y: 20 }}
-          //     whileHover={{ opacity: 1, y: 0 }}
-          //     transition={{ duration: 0.3 }}
-          //     className="absolute inset-0 flex flex-col justify-center items-center text-center bg-[#1f2937] rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"
-          //   >
-          //     <div className="mb-3">{skill.icon}</div>
-          //     <p className="text-sm px-2">{skill.description}</p>
-          //   </motion.div>
-
-          // </motion.div>
-
-<motion.div
-  key={i}
-  initial={{
-    opacity: 0,
-    x: i % 2 === 0 ? -50 : 50,
-    y: i % 3 === 0 ? -30 : 30,
-  }}
-  whileInView={{ opacity: 1, x: 0, y: 0 }}
-  transition={{ duration: 0.6, delay: i * 0.1, type: 'spring', stiffness: 100 }}
-  viewport={{ once: false, amount: 0.3 }}
-  className="group [perspective:1000px] w-full h-52"
->
-  <div
-    className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] rounded-2xl shadow-xl"
-  >
-    {/* Front Side */}
-    <div className="absolute inset-0 bg-[#1f2937] text-white rounded-2xl p-6 flex flex-col items-center justify-between [backface-visibility:hidden]">
-      <div className="mb-4">{skill.icon}</div>
-      <h3 className="text-lg font-semibold mb-2">{skill.name}</h3>
-      {renderStars(skill.rating, skill.color)}
-      <p className="text-sm">{skill.rating}/5</p>
-      <div className="w-full h-2 rounded-full bg-gray-700 mt-2">
-        <div
-          className="h-full rounded-full"
-          style={{ width: `${(skill.rating / 5) * 100}%`, backgroundColor: skill.color }}
-        ></div>
-      </div>
-    </div>
-
-    {/* Back Side with SMOOTH Mouse Tilt */}
-    <div
-      className="absolute inset-0 bg-[#1f2937] text-white rounded-2xl p-6 flex flex-col items-center justify-center text-center [transform:rotateY(180deg)] [backface-visibility:hidden]"
-      style={{
-        transition: 'transform 0.15s ease-out', // fast + smooth
-        willChange: 'transform',
-      }}
-      onMouseMove={(e) => {
-        const card = e.currentTarget;
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const rotateY = ((x / rect.width) - 0.5) * 30; // reduced angle for smoother control
-        const rotateX = ((0.5 - y / rect.height)) * 30;
-
-        card.style.transform = `rotateY(180deg) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = 'rotateY(180deg) rotateX(0deg) rotateY(0deg) scale(1)';
-      }}
-    >
-      <div className="mb-3">{skill.icon}</div>
-      <p className="text-sm px-2">{skill.description}</p>
-    </div>
-  </div>
-</motion.div>
-
-
+                  card.style.transform = `rotateY(180deg) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'rotateY(180deg) rotateX(0deg) rotateY(0deg) scale(1)';
+                }}
+              >
+                <div className="mb-3">{skill.icon}</div>
+                <p className="text-sm px-2">{skill.description}</p>
+              </div>
+            </div>
+          </motion.div>
 
         ))}
       </div>

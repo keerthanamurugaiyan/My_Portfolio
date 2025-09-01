@@ -1,68 +1,3 @@
-// import React, { useEffect, useState } from 'react';
-// import { motion } from 'framer-motion';
-
-// const CustomCursor = () => {
-//   const [position, setPosition] = useState({ x: 0, y: 0 });
-
-//   useEffect(() => {
-//     const moveCursor = (e) => {
-//       setPosition({ x: e.clientX, y: e.clientY });
-//     };
-
-//     window.addEventListener('mousemove', moveCursor);
-//     return () => window.removeEventListener('mousemove', moveCursor);
-//   }, []);
-
-//   const color = '#C77DFF';
-
-//   return (
-//     <>
-// <motion.div className='bg-[#B59ED5]/57'
-//   animate={{ x: position.x - 20, y: position.y - 20 }}
-//   transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-//   style={{
-//     position: 'fixed',
-//     top: 0,
-//     left: 0,
-//     width: 42,
-//     height: 42,
-//     // backgroundColor: 'rgba(129, 72, 173, 0.05)', // 👈 Very soft transparent
-//     borderRadius: '50%',
-//     pointerEvents: 'none',
-//     zIndex: 9999,
-//     boxShadow: '0 0 8px rgba(199, 125, 255, 0.25)', 
-//     // mixBlendMode: 'lighten', // keep text visible
-//   }}
-// />
-
-
-//   {/* Inner solid dot */}
-//   <motion.div
-//     animate={{ x: position.x - 5, y: position.y - 5 }}
-//     transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-//     style={{
-//       position: 'fixed',
-//       top: 0,
-//       left: 0,
-//       width: 12,
-//       height: 12,
-//       backgroundColor: '#c580faff',
-//       borderRadius: '50%',
-//       pointerEvents: 'none',
-//       zIndex: 9999,
-//     }}
-//   />
-// </>
-
-//   );
-// };
-
-// export default CustomCursor;
-
-
-
-
-
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -93,7 +28,7 @@ const CustomCursor = () => {
 
   const color = '#C77DFF';
 
-  if (!showCursor) return null; 
+  if (!showCursor) return null;
 
   return (
     <>
