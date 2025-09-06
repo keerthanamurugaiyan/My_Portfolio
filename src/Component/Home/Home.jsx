@@ -158,7 +158,7 @@ const HeroSection = () => {
   }, [isMenuOpen]);
 
   const handleDownload = () => {
-    saveAs(resumePDF, "Keerthana_Murugaiyan_Resume.pdf");
+    saveAs(resumePDF, "KeerthanaMurugaiyan_Resume.pdf");
   };
 
   return (
