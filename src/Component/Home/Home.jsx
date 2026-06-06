@@ -173,7 +173,7 @@ const HeroSection = () => {
         src={home}
       />
 
-      <div className={`absolute inset-0 z-10 transition-colors duration-500 ${isScrolled ? 'bg-[#40354A]/90' : 'bg-[#40354A]/80'  }`} />
+      <div className={`absolute inset-0 z-10 transition-colors duration-500 ${isScrolled ? 'bg-[#40354A]/90' : 'bg-[#40354A]/80'}`} />
 
       <div
         className={`fixed z-50 transition-all duration-500 ${isScrolled
@@ -182,7 +182,7 @@ const HeroSection = () => {
           } flex justify-between items-center`}
       >
 
-        <h1 className={`lg:ms-10 transition-all duration-500 ${isScrolled ? 'w-[80px] md:w-[90px]' : 'w-[140px] md:w-[160px]' }`} >
+        <h1 className={`lg:ms-10 transition-all duration-500 ${isScrolled ? 'w-[80px] md:w-[90px]' : 'w-[140px] md:w-[160px]'}`} >
 
           {/* <img
   src={logo}
