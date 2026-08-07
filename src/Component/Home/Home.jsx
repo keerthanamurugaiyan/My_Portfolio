@@ -31,12 +31,12 @@ const HeroSection = () => {
   }, []);
 
   const sentences = [
-    "Turning Ideas into Pixel-Perfect Interfaces",
-    "Crafting Beautiful & Responsive Web Designs",
-    "Building Modern Frontend Experiences",
-    "Transforming Designs into Interactive UI",
-    "Passionate React Developer with a Creative Touch"
-  ];
+  "Building Modern React Applications with Clean Code",
+  "Crafting Responsive & User-Centric Digital Experiences",
+  "Turning Complex Ideas into Simple User Interfaces",
+  "Creating Scalable Frontend Solutions with React.js",
+  "Exploring AI, Prompt Engineering & Modern Web Technologies"
+];
 
   const [displayedText, setDisplayedText] = useState("");
   const [sentenceIndex, setSentenceIndex] = useState(0);
@@ -370,6 +370,7 @@ const HeroSection = () => {
               <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#B59ED5] via-white to-[#B59ED5]"> Keerthana Murugaiyan </span>
               ,<br />
               a Front-End Developer
+              {/* a Front-End Developer | AI & Prompt Engineering Enthusiast */}
             </Sparkles>
           </motion.h1>
 

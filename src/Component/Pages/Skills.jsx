@@ -3,77 +3,191 @@ import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { SiHtml5, SiCss3, SiBootstrap, SiTailwindcss, SiJavascript, SiReact, SiReduxsaga, SiGit, SiMui, SiPrimereact } from 'react-icons/si';
 import { HiRocketLaunch } from 'react-icons/hi2';
+import { FaRobot } from "react-icons/fa";
+import { TbPrompt } from "react-icons/tb";
+import { HiSparkles } from "react-icons/hi2";
+import { PiBrainDuotone } from "react-icons/pi";
 
-const skills = [
+// const skills = [
+//   {
+//     name: 'HTML5',
+//     icon: <SiHtml5 className="text-orange-500 text-5xl" />,
+//     rating: 5,
+//     color: '#f97316',
+//     description: 'Strong foundation in semantic HTML, accessibility, and clean markup. Experienced in structuring scalable, SEO-friendly web pages.',
+//   },
+//   {
+//     name: 'CSS3',
+//     icon: <SiCss3 className="text-blue-500 text-5xl" />,
+//     rating: 4,
+//     color: '#3b82f6',
+//     description: 'Proficient in Flexbox, Grid, media queries, and responsive UI design. Capable of crafting pixel-perfect layouts for all screen sizes.',
+//   },
+//   {
+//     name: 'Bootstrap',
+//     icon: <SiBootstrap className="text-purple-500 text-5xl" />,
+//     rating: 4.5,
+//     color: '#8b5cf6',
+//     description: 'Skilled in building responsive and mobile-first layouts using Bootstrap components and utility classes. Customized themes effectively.',
+//   },
+//   {
+//     name: 'Tailwind CSS',
+//     icon: <SiTailwindcss className="text-cyan-500 text-5xl" />,
+//     rating: 4,
+//     color: '#06b6d4',
+//     description: 'Well-versed in Tailwind’s utility-first approach to rapidly develop clean and modern UIs. Experience with custom configurations and dark mode.',
+//   },
+//   {
+//     name: 'JavaScript',
+//     icon: <SiJavascript className="text-yellow-400 text-5xl" />,
+//     rating: 4,
+//     color: '#facc15',
+//     description: 'Solid understanding of ES6+, asynchronous programming, and DOM manipulation. Confident in building dynamic and interactive web apps.',
+//   },
+//   {
+//     name: 'React',
+//     icon: <SiReact className="text-cyan-400 text-5xl" />,
+//     rating: 4.5,
+//     color: '#06b6d4',
+//     description: 'Experienced with React hooks, component design, props/state, and context API. Focused on building scalable and reusable UI components.',
+//   },
+//   {
+//     name: 'Redux Saga',
+//     icon: <SiReduxsaga className="text-purple-400 text-5xl" />,
+//     rating: 4,
+//     color: '#a855f7',
+//     description: 'Efficient in managing complex side effects using Redux Saga. Familiar with watcher-worker patterns and real-time data handling.',
+//   },
+//   {
+//     name: 'Git',
+//     icon: <SiGit className="text-gray-700 text-5xl" />,
+//     rating: 3.5,
+//     color: '#6b7280',
+//     description: 'Comfortable with Git version control, branching strategies, and collaborative workflows. Regularly use GitHub for code reviews and version tracking.',
+//   },
+//   {
+//     name: 'Material UI',
+//     icon: <SiMui className="text-blue-400 text-5xl" />,
+//     rating: 3,
+//     color: '#0284c7',
+//     description: 'Capable of building enterprise-grade UIs with Material UI’s component library. Customization with themes and responsive design included.',
+//   },
+//   {
+//     name: 'PrimeReact',
+//     icon: <SiPrimereact className="text-purple-300 text-5xl" />,
+//     rating: 3,
+//     color: '#c084fc',
+//     description: 'Hands-on experience using PrimeReact components for rapid UI development. Suitable for data-heavy dashboards and form-intensive modules.',
+//   },
+// ];
+
+const technicalSkills = [
   {
-    name: 'HTML5',
+    name: "HTML5",
     icon: <SiHtml5 className="text-orange-500 text-5xl" />,
     rating: 5,
-    color: '#f97316',
-    description: 'Strong foundation in semantic HTML, accessibility, and clean markup. Experienced in structuring scalable, SEO-friendly web pages.',
+    color: "#f97316",
+    description:
+      "Strong foundation in semantic HTML, accessibility, and SEO-friendly markup.",
   },
   {
-    name: 'CSS3',
+    name: "CSS3",
     icon: <SiCss3 className="text-blue-500 text-5xl" />,
     rating: 4,
-    color: '#3b82f6',
-    description: 'Proficient in Flexbox, Grid, media queries, and responsive UI design. Capable of crafting pixel-perfect layouts for all screen sizes.',
+    color: "#3b82f6",
+    description:
+      "Responsive layouts using Flexbox, Grid and Media Queries.",
   },
   {
-    name: 'Bootstrap',
+    name: "Bootstrap",
     icon: <SiBootstrap className="text-purple-500 text-5xl" />,
     rating: 4.5,
-    color: '#8b5cf6',
-    description: 'Skilled in building responsive and mobile-first layouts using Bootstrap components and utility classes. Customized themes effectively.',
+    color: "#8b5cf6",
+    description:
+      "Responsive mobile-first UI development using Bootstrap.",
   },
   {
-    name: 'Tailwind CSS',
+    name: "Tailwind CSS",
     icon: <SiTailwindcss className="text-cyan-500 text-5xl" />,
     rating: 4,
-    color: '#06b6d4',
-    description: 'Well-versed in Tailwind’s utility-first approach to rapidly develop clean and modern UIs. Experience with custom configurations and dark mode.',
+    color: "#06b6d4",
+    description:
+      "Modern utility-first CSS framework with responsive design.",
   },
   {
-    name: 'JavaScript',
+    name: "JavaScript",
     icon: <SiJavascript className="text-yellow-400 text-5xl" />,
     rating: 4,
-    color: '#facc15',
-    description: 'Solid understanding of ES6+, asynchronous programming, and DOM manipulation. Confident in building dynamic and interactive web apps.',
+    color: "#facc15",
+    description:
+      "ES6+, DOM manipulation, async programming and API integration.",
   },
   {
-    name: 'React',
+    name: "React.js",
     icon: <SiReact className="text-cyan-400 text-5xl" />,
     rating: 4.5,
-    color: '#06b6d4',
-    description: 'Experienced with React hooks, component design, props/state, and context API. Focused on building scalable and reusable UI components.',
+    color: "#06b6d4",
+    description:
+      "Reusable components, Hooks, Context API and scalable applications.",
   },
   {
-    name: 'Redux Saga',
+    name: "Redux Toolkit & Saga",
     icon: <SiReduxsaga className="text-purple-400 text-5xl" />,
     rating: 4,
-    color: '#a855f7',
-    description: 'Efficient in managing complex side effects using Redux Saga. Familiar with watcher-worker patterns and real-time data handling.',
+    color: "#a855f7",
+    description:
+      "Efficient state management and handling asynchronous workflows.",
   },
   {
-    name: 'Git',
-    icon: <SiGit className="text-gray-700 text-5xl" />,
+    name: "Git",
+    icon: <SiGit className="text-gray-400 text-5xl" />,
     rating: 3.5,
-    color: '#6b7280',
-    description: 'Comfortable with Git version control, branching strategies, and collaborative workflows. Regularly use GitHub for code reviews and version tracking.',
+    color: "#9ca3af",
+    description:
+      "Version control, GitHub collaboration and branching strategies.",
   },
   {
-    name: 'Material UI',
+    name: "Material UI",
     icon: <SiMui className="text-blue-400 text-5xl" />,
     rating: 3,
-    color: '#0284c7',
-    description: 'Capable of building enterprise-grade UIs with Material UI’s component library. Customization with themes and responsive design included.',
+    color: "#38bdf8",
+    description:
+      "Building enterprise-grade interfaces using Material UI.",
   },
   {
-    name: 'PrimeReact',
-    icon: <SiPrimereact className="text-purple-300 text-5xl" />,
+    name: "PrimeReact",
+    icon: <SiPrimereact className="text-violet-300 text-5xl" />,
     rating: 3,
-    color: '#c084fc',
-    description: 'Hands-on experience using PrimeReact components for rapid UI development. Suitable for data-heavy dashboards and form-intensive modules.',
+    color: "#c084fc",
+    description:
+      "Building dashboard and form-based applications quickly.",
+  },
+];
+
+const aiSkills = [
+  {
+    name: "Prompt Engineering",
+    icon: <TbPrompt className="text-pink-400 text-5xl" />,
+    rating: 3.5,
+    color: "#ec4899",
+    description:
+      "Creating effective prompts for AI assistants and improving response quality.",
+  },
+  {
+    name: "LLMs & RAG",
+    icon: <PiBrainDuotone className="text-indigo-400 text-5xl" />,
+    rating: 3,
+    color: "#6366f1",
+    description:
+      "Learning Large Language Models, Retrieval-Augmented Generation and AI workflows.",
+  },
+  {
+    name: "AI Tools",
+    icon: <HiSparkles className="text-yellow-400 text-5xl" />,
+    rating: 3.5,
+    color: "#facc15",
+    description:
+      "Hands-on with ChatGPT, Claude, Gemini and Antigravity for AI-assisted development.",
   },
 ];
 
@@ -101,15 +215,21 @@ const Skills = () => {
   return (
     <section className=" py-1 px-6 overflow-hidden">
 
-      <h2 className="text-4xl font-bold text-center text-gray-800 mb-3">My Skills</h2>
+      {/* <h2 className="text-4xl font-bold text-center text-gray-800 mb-3">My Skills</h2> */}
+      <h2 className="text-4xl font-bold text-center text-gray-800 mb-3"> Technical Skills </h2>
+
+      {/* <p className="text-center text-gray-600 italic mt-3 mb-10">
+    Building responsive, scalable, and modern web applications using the latest frontend technologies.
+</p> */}
 
       <p className="text-center text-gray-600 text-md mb-10 max-w-2xl mx-auto italic">
-        Building seamless, high-performing interfaces where design meets data and every interaction feels effortless!{" "}
+        Building responsive, scalable, and modern web applications using the latest frontend technologies.{" "}
         <HiRocketLaunch className="inline align-middle text-purple-600 text-xl" />
       </p>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto">
-        {skills.map((skill, i) => (
+        {/* {skills.map((skill, i) => ( */}
+        {technicalSkills.map((skill, i) => (
 
           <motion.div
             key={i}
@@ -169,6 +289,84 @@ const Skills = () => {
 
         ))}
       </div>
+
+      <div className="mt-24">
+
+        <h2 className="text-4xl font-bold text-center text-gray-800">
+          AI & Prompt Engineering
+        </h2>
+
+        <p className="text-center text-gray-600 italic mt-3 mb-10">
+          Leveraging AI tools and prompt engineering techniques to build smarter and faster development workflows. {""}
+          <FaRobot className="inline align-middle text-purple-600 text-xl" />
+        </p>
+
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+
+          {aiSkills.map((skill, i) => (
+
+            <motion.div
+              key={i}
+              initial={{
+                opacity: 0,
+                x: i % 2 === 0 ? -50 : 50,
+                y: i % 3 === 0 ? -30 : 30,
+              }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ duration: 0.6, delay: i * 0.1, type: 'spring', stiffness: 100 }}
+              viewport={{ once: false, amount: 0.3 }}
+              className="group [perspective:1000px] w-full h-52"
+            >
+              <div
+                className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] rounded-2xl shadow-xl"
+              >
+                {/* Front Side */}
+                <div className="absolute inset-0 bg-[#1f2937] text-white rounded-2xl p-6 flex flex-col items-center justify-between [backface-visibility:hidden]">
+                  <div className="mb-4">{skill.icon}</div>
+                  <h3 className="text-lg font-semibold mb-2">{skill.name}</h3>
+                  {renderStars(skill.rating, skill.color)}
+                  <p className="text-sm">{skill.rating}/5</p>
+                  <div className="w-full h-2 rounded-full bg-gray-700 mt-2">
+                    <div
+                      className="h-full rounded-full"
+                      style={{ width: `${(skill.rating / 5) * 100}%`, backgroundColor: skill.color }}
+                    ></div>
+                  </div>
+                </div>
+
+                {/* Back Side with SMOOTH Mouse Tilt */}
+                <div
+                  className="absolute inset-0 bg-[#1f2937] text-white rounded-2xl p-6 flex flex-col items-center justify-center text-center [transform:rotateY(180deg)] [backface-visibility:hidden]"
+                  style={{
+                    transition: 'transform 0.15s ease-out',
+                    willChange: 'transform',
+                  }}
+                  onMouseMove={(e) => {
+                    const card = e.currentTarget;
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const rotateY = ((x / rect.width) - 0.5) * 30;
+                    const rotateX = ((0.5 - y / rect.height)) * 30;
+
+                    card.style.transform = `rotateY(180deg) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'rotateY(180deg) rotateX(0deg) rotateY(0deg) scale(1)';
+                  }}
+                >
+                  <div className="mb-3">{skill.icon}</div>
+                  <p className="text-sm px-2">{skill.description}</p>
+                </div>
+              </div>
+            </motion.div>
+
+          ))}
+
+        </div>
+
+      </div>
+
     </section>
 
   );

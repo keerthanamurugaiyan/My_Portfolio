@@ -1,33 +1,103 @@
 import React from 'react';
 import { FaTools } from 'react-icons/fa';
 import lending from '../../assets/lendwise.jpg';
-import foodApplication from '../../assets/Food-Delivery.webp';
+// import foodApplication from '../../assets/Food-Delivery.webp';
 import alwinDigital from '../../assets/alwin_digital.png';
+import investmentManagement from '../../assets/Investment_Management.png';
+
+// const projects = [
+//   {
+//     title: "Lendwise – Smart Lending Platform UI",
+//     shortDesc: "A secure and intuitive lending platform UI built with React.",
+//     fullDesc:
+//       "A secure and intuitive lending platform interface built using ReactJS and Bootstrap. Includes modules for loan requests, approvals, and repayment tracking. Integrated API calls for seamless data flow and JWT-based user authentication. Features an admin panel for monitoring activities, user verification, and dispute handling.",
+//     image: lending,
+//     url: "#"
+//   },
+//   {
+//     title: "Alwin Digital - Branding Website",
+//     shortDesc: "Responsive static site for a digital branding company.",
+//     fullDesc:
+//       "A custom digital branding website developed using ReactJS and Bootstrap for responsive layout and styling. Fully optimized for performance and user accessibility. Integrated React Icons, CSS animations, and Bootstrap utilities for a modern, mobile-first UI. Hosted on Firebase, with a strong focus on branding consistency and smooth user experience.",
+//     image: alwinDigital,
+//     url: "https://allwindigital-vadapalani.web.app"
+//   },
+//   {
+//     title: "Food Application - Dynamic Delivery UI",
+//     shortDesc: "React-based food delivery app with filterable UI and cart.",
+//     fullDesc:
+//       "A responsive food delivery UI built with React.js and Material-UI, featuring filterable categories, dynamic food cards, and cart management. Used Redux-Saga for smooth state handling and integrated Formik with validation. Secured with authentication, connected to RESTful APIs, and styled with pixel-perfect layouts using CSS, Bootstrap, and MUI.",
+//     image: foodApplication,
+//     url: "#"
+//   }
+// ];
+
 
 const projects = [
   {
-    title: "Lendwise – Smart Lending Platform UI",
-    shortDesc: "A secure and intuitive lending platform UI built with React.",
+    title: "Investment & Referral Management System (Freelance)",
+
+    shortDesc:
+      "A role-based investment platform with customer, referral, payment verification, and payout management.",
+
     fullDesc:
-      "A secure and intuitive lending platform interface built using ReactJS and Bootstrap. Includes modules for loan requests, approvals, and repayment tracking. Integrated API calls for seamless data flow and JWT-based user authentication. Features an admin panel for monitoring activities, user verification, and dispute handling.",
+      "Currently developing an Investment & Referral Management System for an individual client using React.js. Built role-based dashboards for Admin, Staff, Agent, and Customer with investment, referral, payment, and payout management. Integrated REST APIs and reusable UI components while leveraging AI-assisted development.",
+
+    tech: [
+      "React.js",
+      "JavaScript",
+      "Redux Toolkit",
+      "Redux Saga",
+      "Tailwind CSS",
+      "REST APIs",
+      "Git"
+    ],
+
+    image: investmentManagement,
+    url: "#"
+  },
+
+  {
+    title: "LendWise – Loan Management Web Application",
+
+    shortDesc:
+      "A responsive loan management platform with authentication and repayment tracking.",
+
+    fullDesc:
+      "Developed a responsive loan management web application using React.js, Bootstrap, Redux Saga, and REST APIs. Implemented secure authentication, loan request and approval workflows, repayment tracking, reusable UI components, and an admin dashboard. Focused on performance optimization, responsive design, and an intuitive user experience.",
+
+    tech: [
+      "React.js",
+      "JavaScript",
+      "Bootstrap",
+      "Redux Saga",
+      "REST APIs"
+    ],
+
     image: lending,
     url: "#"
   },
+
   {
-    title: "Alwin Digital - Branding Website",
-    shortDesc: "Responsive static site for a digital branding company.",
+    title: "Allwin Digital – Freelance Business Website",
+
+    shortDesc:
+      "A modern responsive business website developed for an individual client.",
+
     fullDesc:
-      "A custom digital branding website developed using ReactJS and Bootstrap for responsive layout and styling. Fully optimized for performance and user accessibility. Integrated React Icons, CSS animations, and Bootstrap utilities for a modern, mobile-first UI. Hosted on Firebase, with a strong focus on branding consistency and smooth user experience.",
+      "Designed and developed a responsive business website using React.js, HTML5, CSS3, JavaScript, and Bootstrap. Created reusable UI components, responsive layouts, interactive navigation, and optimized performance across desktop, tablet, and mobile devices. Successfully deployed the application on Firebase Hosting.",
+
+    tech: [
+      "React.js",
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+      "Bootstrap",
+      "Firebase"
+    ],
+
     image: alwinDigital,
     url: "https://allwindigital-vadapalani.web.app"
-  },
-  {
-    title: "Food Application - Dynamic Delivery UI",
-    shortDesc: "React-based food delivery app with filterable UI and cart.",
-    fullDesc:
-      "A responsive food delivery UI built with React.js and Material-UI, featuring filterable categories, dynamic food cards, and cart management. Used Redux-Saga for smooth state handling and integrated Formik with validation. Secured with authentication, connected to RESTful APIs, and styled with pixel-perfect layouts using CSS, Bootstrap, and MUI.",
-    image: foodApplication,
-    url: "#"
   }
 ];
 
