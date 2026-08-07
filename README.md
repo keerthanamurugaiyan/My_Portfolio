@@ -1,68 +1,171 @@
-# 🚀 Keerthana Murugaiyan — Frontend Developer Portfolio
+# 🚀 Keerthana Murugaiyan — Front-End React Developer Portfolio
 
-Welcome to my personal portfolio website built with **React JS**, **Tailwind CSS**, and **Framer Motion**. This portfolio showcases my skills, selected projects, and how to get in touch with me.
+A modern, responsive developer portfolio built with **React.js**, **Tailwind CSS**, and **Framer Motion** to showcase my professional experience, technical skills, featured projects, and frontend development expertise.
 
----
+🌐 **Live Demo**
 
-## 🔗 Live Demo
-
-🌐 [View Portfolio](https://your-live-link.com)  
-_(Replace this with your actual deployed URL)_
+https://keerthanamurugaiyan-44785.web.app/
 
 ---
 
-## 🎯 Features
+# ✨ Features
 
-- ⚡ Full-screen animated hero section
-- 👩‍💻 Smoothly animated “About Me” section
-- 🧠 Skills display with iconography
-- 📂 Project cards with hover reveal effects
-- 📱 Fully responsive design (mobile/tablet/desktop)
-- 📞 Contact section with active social media links
-- ✨ Clean, modern UI using Tailwind CSS and Framer Motion
-
----
-
-## 🧰 Tech Stack
-
-- **React JS**
-- **Tailwind CSS**
-- **Framer Motion**
-- **React Icons**
-- **Vite** (for fast development)
+- 🎨 Modern and responsive UI
+- ⚡ Smooth animations powered by Framer Motion
+- 👋 Interactive Hero Section
+- 👩‍💻 Professional About Me section
+- 🚀 Technical Skills showcase
+- 📂 Featured Projects with hover interactions
+- 📄 Resume Download
+- 📱 Mobile-first responsive design
+- 📬 Contact Form with validation
+- 🔗 Social Media Integration
 
 ---
 
-## 📁 Folder Structure
+# 🛠 Tech Stack
 
-src/
-├── Assets/          # Images, videos, resume, and other static assets
-├── Components/      # Reusable UI components like Navbar, Button, etc.
-├── Pages/           # Main sections/pages – About, Skills, Projects, Contact
-├── Home/            # Hero section and homepage layout
-├── Footer/          # Footer component
-├── App.jsx          # Root component with layout and routing
-├── main.jsx         # Entry point – renders App into the DOM
-└── index.css        # Tailwind base styles and global custom CSS
+### Frontend
 
----
+- React.js
+- JavaScript (ES6+)
+- HTML5
+- CSS3
+- Tailwind CSS
 
-## 🧑‍💼 About Me
+### Libraries
 
-I’m a passionate **Frontend Developer** who loves turning ideas into interactive user interfaces. With a strong foundation in modern web technologies and a creative mindset, I focus on building clean, user-friendly, and visually engaging applications.
+- Framer Motion
+- React Icons
+- Formik
+- Yup
 
----
+### Development Tools
 
-## 📬 Contact
-
-Let’s connect!  
-📧 Email: keerthanamurugaiyan06@example.com  
-🔗 [LinkedIn](https://www.linkedin.com/in/keerthana-murugaiyan-947597303/)  
+- Vite
+- Git
+- GitHub
+- VS Code
 
 ---
 
-## 📄 License
+# 📂 Featured Projects
 
-This project is open source and free to use.
+### 📈 Investment & Referral Management System *(Freelance)*
+
+A role-based investment management platform with Admin, Staff, Agent, and Customer dashboards.
+
+**Highlights**
+
+- Investment Plan Management
+- Referral Tracking
+- Payment Verification
+- Monthly Returns
+- PDF Reports
+- REST API Integration
 
 ---
+
+### 💰 Lendwise – Smart Lending Platform
+
+A responsive lending platform UI with authentication and loan management features.
+
+**Highlights**
+
+- Loan Dashboard
+- JWT Authentication
+- REST API Integration
+- Responsive UI
+- Admin Panel
+
+---
+
+### 🌐 Allwin Digital
+
+A modern branding website developed for a digital marketing agency.
+
+**Highlights**
+
+- Responsive Design
+- React.js
+- Bootstrap
+- Firebase Hosting
+- SEO-Friendly Structure
+
+---
+
+# 📁 Project Structure
+
+```
+src
+├── assets
+├── components
+├── pages
+├── App.jsx
+├── main.jsx
+└── index.css
+```
+
+---
+
+# 🚀 Getting Started
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/your-username/portfolio.git
+```
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Start Development Server
+
+```bash
+npm run dev
+```
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+---
+
+# 📸 Preview
+
+> Add screenshots of your portfolio homepage, projects section, skills section, and contact section here.
+
+---
+
+# 📬 Contact
+
+📧 **Email**
+
+keerthanamurugaiyan06@gmail.com
+
+🌐 **Portfolio**
+
+https://keerthanamurugaiyan-44785.web.app/
+
+💼 **LinkedIn**
+
+https://www.linkedin.com/in/keerthana-murugaiyan-947597303/
+
+🐙 **GitHub**
+
+https://github.com/keerthanamurugaiyan
+
+---
+
+# 📄 License
+
+This project is open source and available under the MIT License.
+
+---
+
+⭐ If you like this project, feel free to star the repository!
